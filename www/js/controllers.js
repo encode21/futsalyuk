@@ -6,9 +6,9 @@ angular.module('starter.controllers', [])
 .controller('logCtrl', function($scope, $ionicModal, $ionicPopover, $timeout,ionicMaterialMotion,ionicMaterialInk){
 	$timeout(function() {
         ionicMaterialMotion.slideUp({
-            selector: '.to-up'
+            selector: '.slide-up'
         });
-    }, 0);
+    }, 1000);
 	ionicMaterialInk.displayEffect();
 })
 .controller('profileCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
