@@ -1,0 +1,36 @@
+/* Empty. Add your own CSS if you like */
+<<<<<<< HEAD
+=======
+.content-stable{
+	background: url(../img/bglagi.jpg) center center no-repeat !important;
+	background-size: 100%;
+}
+#formLogin div.item{
+	background: #fff !important;
+	color:#f9f9f9;
+}
+#formLogin div button{
+	background: #fff !important;
+	border: none;
+	color: #999;
+	-webkit-transition:all 0.6s;
+	-moz-transition:all 0.6s;
+	-ms-transition:all 0.6s;
+	transition:all 0.6s;
+}
+#formLogin div button:hover,#formLogin div button:focus,#formLogin div button:active{
+	-webkit-transition:all 0.6s;
+	-moz-transition:all 0.6s;
+	-ms-transition:all 0.6s;
+	transition:all 0.6s;
+	background: rgba(255,255,255,.5) !important;
+	color: #fff;
+}
+#formLogin div.item ::-webkit-input-placeholder{
+	color:#999;
+}
+#foot{
+	background: rgba(253,255,255,.66) !important;
+	color:rgba(0,0,0,.5);
+}
+>>>>>>> 12005d97aa50d68f4f933656b2668c940fa82905
