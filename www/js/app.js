@@ -25,6 +25,11 @@ angular.module('starter', ['ionic','starter.controllers','ionic-material', 'ionM
     controller: 'logCtrl'
 
   })
+  .state('penyewa', {
+    url: '/penyewa',
+    templateUrl: 'templates/penyewa.html',
+
+  })
   .state('profile',{
     url: '/profile',
     templateUrl: 'templates/profile.html',
