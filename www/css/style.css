@@ -33,4 +33,23 @@
 	background: rgba(253,255,255,.66) !important;
 	color:rgba(0,0,0,.5);
 }
+/*hr.border{
+	margin: 25px auto 30px;
+    padding: 0;
+    max-width: 250px;
+    border: 0;
+    border-top: solid 5px;
+    text-align: center;
+}
+hr {
+   	box-sizing: content-box;
+    height: 0;
+   	display: block;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+    -webkit-margin-start: auto;
+    -webkit-margin-end: auto;
+    border-style: inset;
+    border-width: 1px;
+}*/
 >>>>>>> 12005d97aa50d68f4f933656b2668c940fa82905
