@@ -1,18 +1,42 @@
 <ion-view data-title="Futsal Yuk!" style="background:#f1f1f1;">
 <ion-content scroll="false">
-<div class="row" style="">
-	<div class="col col-center padding">
-		<center><img src="img/futsal_.png" style="height:25%;" alt=""></center>
+<div class="has-subheader content">&nbsp;</div>
+<div class="row row-center" style="">
+	<div class="col padding">
+		<div class="icon-item hero slide-up">
+			<div class="content item-icon-top">
+				<center><img src="img/logocoba.png" style="height:40%;" alt=""></center>
+				<!-- <div class="" style="background-image: url('img/logocoba.png');"></div> -->
+			</div>
+		</div>
 	</div>
 </div>	
-<div style="position: absolute; bottom: 0px; width: 100%">
-    <div class="content padding">
-	    <button ui-sref="profile" class="button button-full ink button-light" style="color:#33cd5f;">Daftar</button>
-		<p class="text-center" style="color:#999;font-size:10px;">sudah punya akun masuk?</p>
-		<button ui-sref="profile" style="" class="button button-full ink button-balanced">Masuk</button>
-		<p class="text-center" style="color:#999;font-size:10px;">Dengan menggunakan aplikasi ini anda menyetujui Terms of Service </p>
+<div class="hero myhero slide-up" style="position: absolute; bottom: 0px; width: 100%">
+	<div class="content padding">
+		<button class="button button-full button-raised button-stable greencolor">Daftar</button>
+		<p class="text-center" style="margin-bottom:0px;margin-top:15px;color:#999;font-size:10px;">sudah punya akun ?</p>
+		<button ui-sref="profile" style="" class="button button-full button-raised button-balanced">Masuk</button>
+		<p class="text-center" style="color:#999;font-size:10px;">Dengan menggunakan aplikasi ini anda menyetujui <a ng-click="openModal()" href="">Terms of Service</a></p>
 	</div>
 </div>
+<script id="my-modal.html" type="text/ng-template">
+<ion-modal-view>
+	<ion-header-bar class="bar-light">
+		<div class="greencolor h1 title">Terms of Service</div>
+		<div class="buttons buttons-right header-item">
+			<span class="right-buttons">
+				<button ng-click="closeModal()" class="greencolor button button-icon button-clear ion-ios-close">
+				</button>
+			</span>
+		</div>
+	</ion-header-bar>
+
+	
+	<ion-content class="padding">
+		Hello!
+	</ion-content>
+</ion-modal-view>
+</script>
 <!-- <div class="bar bar-footer bar-light" style="">
 	<p class="title">Lupa kata sandi? <a href="javascript:void(0);">Klik disini!</a></p>
 </div> -->

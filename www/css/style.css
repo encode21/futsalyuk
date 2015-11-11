@@ -31,6 +31,20 @@
 	background: rgba(253,255,255,.66) !important;
 	color:rgba(0,0,0,.5);
 }
+.icon-item{
+	height: 40% !important;
+	box-shadow: 0 0 0 !important;
+}
+.myhero{
+	box-shadow: 0 0 0 !important;
+}
+.greencolor{
+	 color:#33cd5f !important;
+}
+a{
+	text-decoration: none;
+	color:#33cd5f;
+}
 /*hr.border{
 	margin: 25px auto 30px;
     padding: 0;
