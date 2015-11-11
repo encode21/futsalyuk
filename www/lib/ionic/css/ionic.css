@@ -3540,7 +3540,7 @@ ion-infinite-scroll {
   /*background: url(../../../img/3.jpg) center center no-repeat fixed;*/
   background-color: #ebf0f6;
   background-size: 100%; 
-  /*background: linear-gradient(to bottom,#017283 0%,#65cdd3 50%,#edb18e 100%);*/
+  /*background: linear-gradient(to right,#33cd5f 0%,#11c1f3 100%);*/
   overflow: hidden; }
 
 .view-container {
