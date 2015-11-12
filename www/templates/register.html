@@ -9,45 +9,48 @@
 	<div class="title title-left header-item">Daftar</div>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
-			<button type="submit" class="custom-right-button button button-icon button-clear ion-checkmark" id="menu-popover" ng-click="popover.show($event)"></button>
+			<button id="coba" type="submit" class="custom-right-button button button-icon ion-checkmark button-clear" id="menu-popover" ng-click="popover.show($event)">
+			<img width="48px" id="loadernya" height="48px" src="img/light_blue_material_design_loading.gif" alt=""></button>
 		</span>
 	</div>
 </ion-header-bar>
 <ion-content scroll="true">
 <div class="col responsive-sm">
 	<div class="padding">
+	<form method="post" id="fdaftar">
 		<div class="">
 	      	<div class="list list-inset">
 			  	<label class="item item-input">
 			    	<i class="icon ion-email"></i>
-			    	<input type="text" placeholder="Email">
+			    	<input ng-model="datadaftar.email" id="email" type="text" placeholder="Email">
 			  	</label>
 			  	<label class="item item-input">
 			    	<i class="icon ion-android-person"></i>
-			    	<input type="text" placeholder="Nama pengguna">
+			    	<input ng-model="datadaftar.username" type="text" placeholder="Nama pengguna">
 			  	</label>
 			  	<label class="item item-input">
 			    	<i class="icon ion-locked"></i>
-			    	<input type="password" placeholder="Kata sandi">
+			    	<input ng-model="datadaftar.pwd" type="password" placeholder="Kata sandi">
 			  	</label>
 			</div>
 			<p class="padding-horizontal" style="text-transform: uppercase;padding-bottom:5px;color:#555;border-bottom:solid 1px #999;width:100%;">Profile Team<label style="float:right;font-size:12px;color:#bbb;">Optional</label></p>
 			<div class="list list-inset">
 				<label class="item item-input">
 				   	<i class="icon ion-ios-football"></i>
-				  	<input type="text" placeholder="Nama Team">
+				  	<input type="text" ng-model="datadaftar.nama" placeholder="Nama Team">
 				</label>
 				<label class="item item-input">
 			    	<i class="icon ion-person-stalker"></i>
-			    	<input type="text" placeholder="Berapa anggota team">
+			    	<input type="text" ng-model="datadaftar.jml" placeholder="Jumlah anggota team">
 			  	</label>
 			  	<label class="item item-input">
 				   	<i class="icon ion-iphone"></i>
-			    	<input type="text" maxlength="12" placeholder="No Telp">
+			    	<input type="text" maxlength="12" ng-model="datadaftar.tlp" placeholder="No Telp">
 			  	</label>
 			</div>
-	      	<button ui-sref="" class="button button-full ink button-balanced">Daftar</button>
+	      	<button ng-click="daftar()" class="button button-full ink button-balanced">Daftar</button>
 	    </div>
+	</form>
 		<p class="text-center" style="color:#999;font-size:11px;">Dengan menggunakan aplikasi ini anda menyetujui <a href="javascript:void(0);" ng-click="openModal()">Terms of Service</a></p>
 	</div>	
 </div>
