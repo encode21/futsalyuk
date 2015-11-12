@@ -1,6 +1,5 @@
-<ion-view view-title="Profile">
-<ion-content scroll="true">
-	
+<ion-view view-title="">
+<ion-content scroll="false">
 	<div class="hero slide-up" style="background-image: url('img/bglagi.jpg');">
 		<div class="content item-icon-top">
 			<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>
@@ -8,7 +7,7 @@
 			<h4>sony_surahman</h4>
 		</div>
 	</div>
-	<div class="tabs tabs-balanced tabs-icon-top static" style="position: static; margin-bottom: 15px;">
+	<div class="tabs tabs-balanced tabs-icon-top static" style="position: static; margin-bottom: 0;">
 		<a class="tab-item">
 			<i class="icon ion-ios-home"></i>
 			Home
@@ -30,8 +29,9 @@
 			Keluar
 		</a>
 	</div>
+	<div scroll="true" class="content">
 	<h4 class="content padding double-padding-x">Riwayat Bermain</h4>
-        <div class="list animate-fade-slide-in-right">
+        <div class="list animate-blinds">
             <a ui-sref="app.friends" class="item item-avatar item-icon-right">
                 <img src="img/jon-snow.jpg">
                 <h2>Sinthya Futsal</h2>
@@ -51,5 +51,6 @@
                 <i class="icon ion-chatbubble muted"></i>
             </a>
         </div>
+	</div>
 </ion-content>
 </ion-view>
