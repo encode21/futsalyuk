@@ -136,6 +136,11 @@ angular.module('starter.controllers', [])
                 title: "Information",
                 message: "No.Telp mohon diisi"
             });
+        }else if (!$scope.datadaftar.regional){
+            $scope.showAlert({
+                title: "Information",
+                message: "Data Regional mohon diisi"
+            });
         }else{
             // $scope.showAlert({
             //     title: "Information",
@@ -147,6 +152,7 @@ angular.module('starter.controllers', [])
                 pwd: $scope.datadaftar.pwd,
                 nama: $scope.datadaftar.nama,
                 jml: $scope.datadaftar.jml,
+                reg: $scope.datadaftar.regional,
                 tlp: $scope.datadaftar.tlp
             }).success(function(data){
                 $scope.showAlert({
