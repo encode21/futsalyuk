@@ -19,23 +19,25 @@ angular.module('starter', ['ionic','starter.controllers','ionic-material', 'ionM
 })
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-  .state('login', {
+  .state('menu', {
     url: '/',
-    templateUrl: 'templates/login.html',
+    templateUrl: 'templates/menu.html',
     controller: 'logCtrl'
-
   })
-  .state('penyewa', {
-    url: '/penyewa',
-    templateUrl: 'templates/penyewa.html',
-
+  .state('login',{
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
   })
   .state('profile',{
     url: '/profile',
     templateUrl: 'templates/profile.html',
     controller: 'profileCtrl'
+  })
+  .state('register',{
+    url: '/register',
+    templateUrl: 'templates/register.html',
+    controller: 'registerCtrl'
   });
-
   $urlRouterProvider.otherwise("/");
-
 })

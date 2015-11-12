@@ -45,22 +45,54 @@ a{
 	text-decoration: none;
 	color:#33cd5f;
 }
-/*hr.border{
-	margin: 25px auto 30px;
-    padding: 0;
-    max-width: 250px;
-    border: 0;
-    border-top: solid 5px;
-    text-align: center;
+.fileUpload {
+    position: relative;
+    overflow: hidden;
 }
-hr {
-   	box-sizing: content-box;
-    height: 0;
-   	display: block;
-    -webkit-margin-before: 0.5em;
-    -webkit-margin-after: 0.5em;
-    -webkit-margin-start: auto;
-    -webkit-margin-end: auto;
-    border-style: inset;
-    border-width: 1px;
-}*/
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.paddingContent{
+	padding:30px 50px 30px 50px;
+}
+.custom-text{
+	color:#999;
+	font-size:11px;
+}
+.border-right{
+	border-right:solid 1px #fff;
+	height:50%;
+	margin-top:11px;
+}
+div.buttons-right span.right-buttons button.custom-right-button{
+	color:#fff;
+	background-color:#33cd5f;
+	border-radius:0;
+}
+.position-center{
+	position: absolute;
+	bottom:20%; 
+	width: 100%;
+}
+input.text-color{
+	color:#555;
+}
+.button-bar-login{
+	border-top:solid 1px #ddd;
+}
+div.button-bar-login a.custom{
+	font-size:12px;
+	border-right:solid 1px #ddd;
+}
+div.button-bar-login a.custom-font{
+	font-size:12px;
+	color: #33cd5f;
+}
