@@ -172,12 +172,5 @@ angular.module('starter.controllers', [])
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
         });
-    }, 0);
-
-    $timeout(function() {
-        ionicMaterialMotion.fadeSlideInRight({
-            startVelocity: 3000
-        });
-    }, 700);
-    ionicMaterialInk.displayEffect();
+    }, 0); 
 })

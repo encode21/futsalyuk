@@ -11,7 +11,8 @@
 	<div class="title title-left header-item">Daftar</div>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
-			<button type="submit" class="custom-right-button button button-icon button-clear ion-checkmark" id="menu-popover" ng-click="popover.show($event)"></button>
+			<button id="coba" type="submit" class="custom-right-button button button-icon ion-checkmark button-clear" id="menu-popover" ng-click="popover.show($event)">
+			<img width="48px" id="loadernya" height="48px" src="img/light_blue_material_design_loading.gif" alt=""></button>
 		</span>
 	</div>
 </ion-header-bar>
@@ -38,7 +39,7 @@
 			<div class="list list-inset">
 				<label class="item item-input">
 				   	<i class="icon ion-ios-football padding-icon"></i>
-				  	<input ng-model="datadaftar.nama" type="text" placeholder="Nama Team">
+				  	<input type="text" ng-model="datadaftar.nama" placeholder="Nama Team">
 				</label>
 				<label class="item item-input">
 			    	<i class="icon ion-person-stalker padding-icon"></i>
