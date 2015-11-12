@@ -147,6 +147,7 @@ angular.module('starter.controllers', [])
                 pwd: $scope.datadaftar.pwd,
                 nama: $scope.datadaftar.nama,
                 jml: $scope.datadaftar.jml,
+                reg: $scope.datadaftar.regional,
                 tlp: $scope.datadaftar.tlp
             }).success(function(data){
                 $scope.showAlert({
