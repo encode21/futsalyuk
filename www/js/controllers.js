@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
     }, 1000);
 	ionicMaterialInk.displayEffect();
 })
-.controller('profileCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
+.controller('loginCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
 	// Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -25,4 +25,33 @@ angular.module('starter.controllers', [])
         });
     }, 700);
 	ionicMaterialInk.displayEffect();
+})
+.controller('profileCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
+    // Set Motion
+    $timeout(function() {
+        ionicMaterialMotion.slideUp({
+            selector: '.slide-up'
+        });
+    }, 0);
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
+})
+.controller('registerCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk) {
+    $timeout(function() {
+        ionicMaterialMotion.slideUp({
+            selector: '.slide-up'
+        });
+    }, 0);
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
 })

@@ -1,0 +1,55 @@
+<ion-view data-title="Futsal Yuk!" style="background:#f1f1f1;">
+<ion-content scroll="false">
+<ion-header-bar class="bar-dark bar bar-header disable-user-behavior" align-title="center">
+	<div class="buttons buttons-left header-item">
+		<span class="left-buttons">
+			<button ui-sref="menu" class="button button-icon button-clear ion-chevron-left" menu-toggle="left"></button>
+			<span class="border-right"></span>
+		</span>
+	</div>
+	<div class="title title-left header-item">Daftar</div>
+	<div class="buttons buttons-right header-item">
+		<span class="right-buttons">
+			<button type="submit" class="custom-right-button button button-icon button-clear ion-checkmark" id="menu-popover" ng-click="popover.show($event)"></button>
+		</span>
+	</div>
+</ion-header-bar>
+<div class="col responsive-sm" style="position: absolute; bottom:5%; width: 100%">
+	<div class="content padding">
+		<div class="content">
+	      	<div class="list list-inset">
+			  	<label class="item item-input">
+			    	<i class="icon ion-email"></i>
+			    	<input type="text" placeholder="Email">
+			  	</label>
+			  	<label class="item item-input">
+			    	<i class="icon ion-android-person"></i>
+			    	<input type="text" placeholder="Nama pengguna">
+			  	</label>
+			  	<label class="item item-input">
+			    	<i class="icon ion-locked"></i>
+			    	<input type="password" placeholder="Kata sandi">
+			  	</label>
+			</div>
+			<p class="padding-horizontal" style="text-transform: uppercase;padding-bottom:5px;color:#555;border-bottom:solid 1px #999;width:100%;">Profile Team<label style="float:right;font-size:12px;color:#bbb;">Optional</label></p>
+			<div class="list list-inset">
+				<label class="item item-input">
+				   	<i class="icon ion-ios-football"></i>
+				  	<input type="text" placeholder="Nama Team">
+				</label>
+				<label class="item item-input">
+			    	<i class="icon ion-person-stalker"></i>
+			    	<input type="text" placeholder="Berapa anggota team">
+			  	</label>
+			  	<label class="item item-input">
+				   	<i class="icon ion-iphone"></i>
+			    	<input type="text" maxlength="12" placeholder="No Telp">
+			  	</label>
+			</div>
+	      	<button ui-sref="" class="button button-full ink button-balanced">Daftar</button>
+	    </div>
+		<p class="text-center" style="color:#999;font-size:11px;">Dengan menggunakan aplikasi ini anda menyetujui <a href="">Terms</a> of <a href="">Service</a></p>
+	</div>	
+</div>
+</ion-content>
+</ion-view>
