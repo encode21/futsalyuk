@@ -1,0 +1,39 @@
+<ion-view data-title="Futsal Yuk!" hide-nav-bar="true" style="background:#f1f1f1;">
+<ion-content scroll="false">
+<div class="row row-center" style="">
+	<div class="col padding">
+		<div class="icon-item hero slide-up">
+			<div class="content item-icon-top">
+				<center><img src="img/logocoba.png" style="height:32%;" alt=""></center>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="hero myhero slide-up" style="position: absolute; bottom: 0px; width: 100%">
+    <div class="content paddingContent">
+	    <button ui-sref="register" class="button button-full ink button-raised button-light" style="color:#33cd5f;">Daftar</button>
+		<p class="text-center custom-text" style="margin:2% 0 0 0 ;">sudah punya akun masuk?</p>
+		<button ui-sref="login" style="" class="button button-full button-raised ink button-balanced">Masuk</button>
+		<p class="text-center custom-text">Dengan menggunakan aplikasi ini anda menyetujui <a ng-click="openModal()" href="">Terms of Service</a></p>
+	</div>
+</div>
+<script id="my-modal.html" type="text/ng-template">
+<ion-modal-view>
+	<ion-header-bar class="bar-light">
+		<div class="greencolor h1 title">Terms of Service</div>
+		<div class="buttons buttons-right header-item">
+			<span class="right-buttons">
+				<button ng-click="closeModal()" class="greencolor button button-icon button-clear ion-ios-close">
+				</button>
+			</span>
+		</div>
+	</ion-header-bar>
+
+	
+	<ion-content class="padding">
+		Hello!
+	</ion-content>
+</ion-modal-view>
+</script>
+</ion-content>
+</ion-view>
