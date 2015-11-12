@@ -4,7 +4,7 @@
 angular.module('starter.controllers', [])
 
 .controller('logCtrl', function($scope, $ionicModal, $ionicPopover, $timeout,ionicMaterialMotion,ionicMaterialInk){
-	$timeout(function() {
+    $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
         });
@@ -36,7 +36,7 @@ angular.module('starter.controllers', [])
     });
 })
 .controller('loginCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
-	// Set Motion
+    // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
@@ -48,7 +48,7 @@ angular.module('starter.controllers', [])
             startVelocity: 3000
         });
     }, 700);
-	ionicMaterialInk.displayEffect();
+    ionicMaterialInk.displayEffect();
 })
 .controller('profileCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
     // Set Motion
@@ -65,7 +65,109 @@ angular.module('starter.controllers', [])
     }, 700);
     ionicMaterialInk.displayEffect();
 })
-.controller('registerCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk) {
+.controller('registerCtrl', function($scope, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+    $timeout(function() {
+        ionicMaterialMotion.slideUp({
+            selector: '.slide-up'
+        });
+    }, 0);
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
+    
+    var cb = $("#coba"),ld = $("#loadernya");
+    ld.hide();
+    $scope.showAlert = function(msg) {
+      $ionicPopup.alert({
+          title: msg.title,
+          template: msg.message,
+          okText: 'Ok',
+          okType: 'button-assertive'
+      });
+    }
+    $scope.loader = function() {
+        ld.show();
+        $ionicLoading.show({
+            template:'<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+        });
+        cb.removeClass('ion-checkmark');
+    };
+    $scope.hideLoader = function() {
+        ld.hide();
+        $ionicLoading.hide({
+            template:'<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+        });
+        cb.addClass('ion-checkmark');
+    }
+    $scope.datadaftar={};
+    $scope.daftar = function (){
+        if (!$scope.datadaftar.email){
+            $scope.showAlert({
+                title: "Information",
+                message: "Email mohon diisi"
+            });
+            // $("input[id='email']").attr('focus',true);
+        }else if (!$scope.datadaftar.username){
+            $scope.showAlert({
+                title: "Information",
+                message: "Username mohon diisi"
+            });
+        }else if (!$scope.datadaftar.pwd){
+            $scope.showAlert({
+                title: "Information",
+                message: "Password mohon diisi"
+            });
+        }else if (!$scope.datadaftar.nama){
+            $scope.showAlert({
+                title: "Information",
+                message: "Nama Team mohon diisi"
+            });
+        }else if (!$scope.datadaftar.jml){
+            $scope.showAlert({
+                title: "Information",
+                message: "Jumlah anggota mohon diisi"
+            });
+        }else if (!$scope.datadaftar.tlp){
+            $scope.showAlert({
+                title: "Information",
+                message: "No.Telp mohon diisi"
+            });
+        }else{
+            // $scope.showAlert({
+            //     title: "Information",
+            //     message: "Sukses!"
+            // });
+            beforeAuth.p_daftar({
+                email: $scope.datadaftar.email,
+                username: $scope.datadaftar.username,
+                pwd: $scope.datadaftar.pwd,
+                nama: $scope.datadaftar.nama,
+                jml: $scope.datadaftar.jml,
+                tlp: $scope.datadaftar.tlp
+            }).success(function(data){
+                $scope.showAlert({
+                    title: "Information",
+                    message: "Data Telah Tersimpan"
+                });
+                $scope.hideLoader();
+                $("#fdaftar")[0].reset();
+                window.location = "#/profile";
+            }).error(function() {
+                $scope.showAlert({
+                    title: "Error",
+                    message: "Data Gagal Disimpan"
+                });
+                $scope.hideLoader();
+            });;
+            $scope.loader();
+        }
+    } 
+})
+.controller('sewaCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk) {
     $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
