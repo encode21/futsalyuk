@@ -4,7 +4,7 @@
 angular.module('starter.controllers', [])
 
 .controller('logCtrl', function($scope, $ionicModal, $ionicPopover, $timeout,ionicMaterialMotion,ionicMaterialInk){
-	$timeout(function() {
+    $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
         });
@@ -36,7 +36,7 @@ angular.module('starter.controllers', [])
     });
 })
 .controller('loginCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
-	// Set Motion
+    // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
@@ -48,7 +48,7 @@ angular.module('starter.controllers', [])
             startVelocity: 3000
         });
     }, 700);
-	ionicMaterialInk.displayEffect();
+    ionicMaterialInk.displayEffect();
 })
 .controller('profileCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
     // Set Motion
@@ -147,7 +147,6 @@ angular.module('starter.controllers', [])
                 pwd: $scope.datadaftar.pwd,
                 nama: $scope.datadaftar.nama,
                 jml: $scope.datadaftar.jml,
-                reg: $scope.datadaftar.regional,
                 tlp: $scope.datadaftar.tlp
             }).success(function(data){
                 $scope.showAlert({
@@ -167,4 +166,11 @@ angular.module('starter.controllers', [])
             $scope.loader();
         }
     } 
+})
+.controller('sewaCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk) {
+    $timeout(function() {
+        ionicMaterialMotion.slideUp({
+            selector: '.slide-up'
+        });
+    }, 0); 
 })
