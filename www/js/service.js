@@ -1,7 +1,8 @@
 angular.module('starter.service', [])
 
 .factory('beforeAuth', function($http) {
-    var baseUrl = 'http://198.50.174.69/futsalservice/index.php/main/';
+    // var baseUrl = 'http://198.50.174.69/futsalservice/index.php/main/';
+    var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
     return {
         getAll: function() {
             return $http.get(baseUrl+'ambilteman.php');
