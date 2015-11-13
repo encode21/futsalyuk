@@ -30,10 +30,10 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     templateUrl: 'templates/login.html',
     controller: 'loginCtrl'
   })
-  .state('profile',{
-    url: '/profile',
-    templateUrl: 'templates/profile.html',
-    controller: 'profileCtrl'
+  .state('home',{
+    url: '/home',
+    templateUrl: 'templates/home.html',
+    controller: 'homeCtrl'
   })
   .state('register',{
     url: '/register',
