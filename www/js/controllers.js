@@ -90,7 +90,11 @@ angular.module('starter.controllers', [])
                         title: "Sukses",
                         message: "Berhasil Login"
                     });
-                    window.location='#/profile';
+                    if (data.statusUser=='penyewa') {
+                        var id= $("#idUser").val(data.id);
+                        // console.log(id);
+                        window.location='#/profile';
+                    }
                 }
                 $("#formlogin")[0].reset();
             }).error(function() {
@@ -119,6 +123,16 @@ angular.module('starter.controllers', [])
         });
     }, 700);
     ionicMaterialInk.displayEffect();
+    var id = $("#idUser").val();
+    $scope.getTeamId = function() {
+        beforeAuth.getTeamId(id).success(function(dataTeam) {
+            $scope.dataTeam = dataTeam;
+        });
+        beforeAuth.getUserId(id).success(function(dataUser) {
+            $scope.dataUser = dataUser;
+        });
+    };
+    $scope.getTeamId();
 })
 .controller('registerCtrl', function($scope,$ionicPopover, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
@@ -216,6 +230,7 @@ angular.module('starter.controllers', [])
                 });
                 $scope.hideLoader();
                 $("#fdaftar")[0].reset();
+                // $scope.p_login();
                 // window.location = "#/profile";
             }).error(function() {
                 $scope.showAlert({

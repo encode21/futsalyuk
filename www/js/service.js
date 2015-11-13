@@ -4,7 +4,10 @@ angular.module('starter.service', [])
     var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
     return {
         getUserId: function (uId){
-            return $http.get(baseUrl+'datauser.php?id='+uId); 
+            return $http.get(baseUrl+'datauser?id_user='+uId); 
+        },
+        getTeamId: function (uId){
+            return $http.get(baseUrl+'datateam?id_team='+uId); 
         },
         p_daftar: function (datadaftar){
             return $http.post(baseUrl+'p_daftar',datadaftar,{
