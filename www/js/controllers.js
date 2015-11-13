@@ -94,6 +94,9 @@ angular.module('starter.controllers', [])
                         var id= $("#idUser").val(data.id);
                         // console.log(id);
                         window.location='#/profile';
+                    }else if (data.statusUser=='penyedia') {
+                        var id= $("#idUser").val(data.id);
+                        window.location='#/penyedia'
                     }
                 }
                 $("#formlogin")[0].reset();
