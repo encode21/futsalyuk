@@ -3,21 +3,9 @@ angular.module('starter.service', [])
 .factory('beforeAuth', function($http) {
     var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
     return {
-        getAll: function() {
-            return $http.get(baseUrl+'ambilteman.php');
+        getUserId: function (uId){
+            return $http.get(baseUrl+'datauser.php?id='+uId); 
         },
-        getId: function (temanId){
-            return $http.get(baseUrl+'ambiltemanid.php?id='+temanId); 
-        },
-        create: function (datateman){
-            // console.log(datateman);
-            return $http.post(baseUrl+'tambahteman.php',datateman,{
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;'
-                },
-                data:datateman
-            });
-        }, 
         p_daftar: function (datadaftar){
             return $http.post(baseUrl+'p_daftar',datadaftar,{
                 headers: {
@@ -25,15 +13,12 @@ angular.module('starter.service', [])
                 },
             });
         },
-        update: function (datateman){
-            return $http.post(baseUrl+'updateteman.php',datateman,{
+        p_login: function(f_login) {
+            return $http.post(baseUrl+'p_login', f_login,{
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;'
                 }
             });
-        },
-        delete: function  (id){
-            return $http.get(baseUrl+'hapusteman.php?id='+id);
         }
     };
     

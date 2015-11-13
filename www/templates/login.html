@@ -19,20 +19,22 @@
 	<div class="content padding">
 		<h1 class="text-center" align="center" style="color:#33cd5f;">FutsalYuk!</h1>
 		<br>
+		<form id="formlogin" method="post">
 	    <div class="list card stable-bg" style="background-color:#fff;">
             <div class="item item-body">
 				<label class="item item-input" style="border-bottom:solid 1px #ddd;">
-					<input class="text-color" type="text" placeholder="Name">
+					<input ng-model="flogin.username" class="text-color" type="text" placeholder="Nama pengguna">
 				</label>
 	        	<label class="item item-input">
-	          		<input class="text-color" type="password" placeholder="Password">
+	          		<input ng-model="flogin.password" class="text-color" type="password" placeholder="Kata sandi">
 	        	</label>
            	</div>
-            <div class="button-bar bar-light button-bar-login">
+            <div class="button-bar bar-light button-bar-login" style="border-top:solid 2px #ddd;">
 	    		<a class="button button-raised ink-dark custom">Lupa kata sandi?</a>
-			    <a type="submit" ui-sref="home" class="button button-raised ink-dark custom-font">Masuk</a>
+			    <a type="submit" ng-click="p_login()" class="button button-raised ink-dark custom-font">Masuk</a>
 		    </div>
         </div>
+        </form>
 	</div>	
 </div>
 <div class="bar bar-footer bar-light">
