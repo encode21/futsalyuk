@@ -99,3 +99,12 @@ div.button-bar-login a.custom-font{
 .padding-icon{
 	padding:0 3% 0 0;
 }
+.input-padding{
+	padding-right:5%;
+}
+input.border-bottom-input{
+	border-bottom:solid 1px #ddd;
+}
+p.whitecolor, h1.whitecolor, h2.whitecolor, h3.whitecolor h4.whitecolor h5.whitecolor{
+	color: #fff;
+}
