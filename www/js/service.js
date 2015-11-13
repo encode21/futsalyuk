@@ -10,20 +10,16 @@ angular.module('starter.service', [])
         getId: function (temanId){
             return $http.get(baseUrl+'ambiltemanid.php?id='+temanId); 
         },
-        create: function (datateman){
-            // console.log(datateman);
-            return $http.post(baseUrl+'tambahteman.php',datateman,{
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;'
-                },
-                data:datateman
-            });
-        }, 
         p_daftar: function (datadaftar){
             return $http.post(baseUrl+'p_daftar',datadaftar,{
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;'
                 },
+            });
+        },
+        p_login: function(f_login) {
+            return $http.post(baseUrl+'p_login', f_login, function(data, textStatus, xhr) {
+                /*optional stuff to do after success */
             });
         },
         update: function (datateman){

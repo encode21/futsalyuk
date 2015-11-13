@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.login499007" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>login</name>
+  <name>FutsalYuk!</name>
   <description>&#xD;
-        An Ionic Framework and Cordova project.&#xD;
+        Aplikasi untuk mempermudah dalam booking atau penyewaan lapangan secara online. Selain itu kamu bisa mengajak duel tim futsal lainnya untuk melakukan pertandingan persahabatan.&#xD;
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">&#xD;
-      Ionic Framework Team&#xD;
+  <author email="nkdevs@gmail.com" href="http://nafaskuda.com/">&#xD;
+      Nafaskuda Team&#xD;
     </author>
   <content src="index.html"/>
   <access origin="*"/>
