@@ -18,8 +18,10 @@ angular.module('starter.service', [])
             });
         },
         p_login: function(f_login) {
-            return $http.post(baseUrl+'p_login', f_login, function(data, textStatus, xhr) {
-                /*optional stuff to do after success */
+            return $http.post(baseUrl+'p_login', f_login,{
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;'
+                }
             });
         },
         update: function (datateman){
