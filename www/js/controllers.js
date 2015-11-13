@@ -35,7 +35,7 @@ angular.module('starter.controllers', [])
         // Execute action
     });
 })
-.controller('loginCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
+.controller('loginCtrl', function($scope, $stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -49,6 +49,61 @@ angular.module('starter.controllers', [])
         });
     }, 700);
     ionicMaterialInk.displayEffect();
+
+    /*Processes*/
+    $scope.showAlertError = function(msg){
+        $ionicPopup.alert({
+          title: msg.title,
+          template: msg.message,
+          okText: 'Ok',
+          okType: 'button-assertive'
+      });
+    }
+
+    $scope.flogin = {};
+    $scope.p_login = function() {
+        if (!$scope.flogin.username) {
+            $scope.showAlertError({
+                title: "Information",
+                message: "Username mohon diisi"
+            });
+        }else if (!$scope.flogin.password) {
+            $scope.showAlertError({
+                title: "Information",
+                message: "Password mohon diisi",
+            });
+        }else{
+            beforeAuth.p_login({
+                username: $scope.flogin.username,
+                password: $scope.flogin.password,
+            }).success(function(data){
+                
+                // $scope.hideLoader();
+                // console.log(data);
+                if (data.msg=='error_auth') {
+                    $scope.showAlertError({
+                        title: "Error",
+                        message: "Silahkan cek kembali username dan password Anda :)"
+                    });
+                }else{
+                    $scope.showAlertError({
+                        title: "Sukses",
+                        message: "Berhasil Login"
+                    });
+                    window.location='#/profile';
+                }
+                $("#formlogin")[0].reset();
+            }).error(function() {
+                $scope.showAlertError({
+                    title: "Error",
+                    message: "Gagal Login"
+                });
+                // $scope.hideLoader();
+            });
+            // $scope.loader();
+        }
+    }
+    /*Processes*/
 })
 .controller('profileCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk){
     // Set Motion
@@ -161,14 +216,14 @@ angular.module('starter.controllers', [])
                 });
                 $scope.hideLoader();
                 $("#fdaftar")[0].reset();
-                window.location = "#/profile";
+                // window.location = "#/profile";
             }).error(function() {
                 $scope.showAlert({
                     title: "Error",
                     message: "Data Gagal Disimpan"
                 });
                 $scope.hideLoader();
-            });;
+            });
             $scope.loader();
         }
     } 
