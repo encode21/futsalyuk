@@ -1,5 +1,4 @@
 <ion-view data-title="Futsal Yuk!" style="background:#f1f1f1;">
-<ion-content scroll="false">
 <ion-header-bar class="bar-dark bar bar-header disable-user-behavior" align-title="center">
 	<div class="buttons buttons-left header-item">
 		<span class="left-buttons">
@@ -14,9 +13,10 @@
 		</span>
 	</div>
 </ion-header-bar>
+<ion-content scroll="true">
 
-<div class="col responsive-sm position-center">
-	<div class="content padding">
+<div class="col responsive-sm center">
+	<div class="padding">
 		<h1 class="text-center" align="center" style="color:#33cd5f;">FutsalYuk!</h1>
 		<br>
 		<form id="formlogin" method="post">
@@ -37,8 +37,8 @@
         </form>
 	</div>	
 </div>
+</ion-content>
 <div class="bar bar-footer bar-light">
 	<p class="title">Belom punya akun? <a ui-sref="register" style="color:#33cd5f;">Klik disini!</a></p>
 </div>
-</ion-content>
 </ion-view>

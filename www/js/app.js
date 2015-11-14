@@ -43,10 +43,10 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     templateUrl: 'templates/sewa.html',
     controller: 'sewaCtrl'
   })
-  .state('detail-lapangan',{
-    url: '/detail-lapangan',
-    templateUrl: 'templates/detail-lapangan.html',
-    controller: 'detailLapanganCtrl'
+  .state('detailLapangan',{
+    url: '/sewa/:dtId_penyedia',
+    templateUrl: 'templates/detail.html',
+    controller: 'detailLapangan'
   });
   $urlRouterProvider.otherwise("/");
 })

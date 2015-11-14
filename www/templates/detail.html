@@ -8,10 +8,10 @@
 			<span class="border-right"></span>
 		</span>
 	</div>
-	<div class="title title-left header-item">Sewa</div>
+	<div class="title title-left header-item" ng-repeat="dt in dtlapdetail">Lapangan {{ dt.nama_penyedia }}</div>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
-			<button type="submit" class="custom-right-button button button-icon button-clear ion-android-more-vertical" id="menu-popover" ng-click="popover.show($event)"></button>
+			<button class="custom-right-button button button-icon button-clear ion-android-more-vertical" ng-click="showPopup()"></button>
 		</span>
 	</div>
 </ion-header-bar>
@@ -30,67 +30,44 @@
 </ion-header-bar>
 <ion-content scroll="true" class="scroll-content ionic-scroll  has-header" style="transform: translate3d(0px, 0px, 0px) scale(1);">
 <div class="hero slide-up" style="background-image: url('img/bglagi.jpg');margin-top:50px;">
-	<div class="content item-icon-top padding">
+	<div class="padding">
 		<div class="card" style="background:rgba(5,5,5,.8);">
-		  	<div class="item item-body">
+		  	<div class="item-body" ng-repeat="dt in dtlapdetail">
 			    <!-- <center><img class="avatar" src="img/man.png"></center> -->
-			    <p class="greencolor">Libero Futsal</p>
+			    <p class="greencolor"><strong>{{dt.nama_penyedia}}</strong></p>
 			    <p class="whitecolor">
-			      	This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-			      	the content is from a card-body consisting of an image and paragraph text. The 	
+			    	{{dt.alamat}}
 			    </p>
+			    <b class="badge badge-balanced" style="float:none;">IDR {{dt.harga}}/jam</b>
 			</div>
 	  	</div>
 	</div>
 </div>
 <div class="col responsive-sm">
 	<div class="content padding">
-		<h4 class="greencolor"><i class="icon ion-images"></i> Gallery Thumbnail</h4>
-		<div class="row conte">
-			<div class="col" style="padding:0 10px 0 10px;">
-				<a href="">
-					<img src="img/bglagi.jpg" style="border-radius:5px;width:64px;height:64px;">
-				</a>
-			</div>
-			<div class="col" style="padding:0 10px 0 10px;">
-				<a href="">
-					<img src="img/profile-bg.jpg" style="border-radius:5px;width:64px;height:64px;">
-				</a>
-			</div>
-			<div class="col" style="padding:0 10px 0 10px;">
-				<a href="">
-					<img src="img/futsal.jpg" style="border-radius:5px;width:64px;height:64px;">
-				</a>
-			</div>
-			<div class="col" style="padding:0 10px 0 10px;">
-				<a href="">
-					<img src="img/1.jpg" style="border-radius:5px;width:64px;height:64px;">
-				</a>
+		<div class="card padding" style="padding:0 16px !important;border-radius:4px;margin-bottom:10px;">
+			<h4 class="greencolor"><i class="icon ion-images"></i> Gallery Thumbnail</h4>
+				<!-- I'm a Header in a Card! -->
+			<div class="">
+				<div class="row" style="padding:0 !important;">
+					<div ng-repeat="dtgal in dtgallery" class="col" style="padding:0 0 0 2px;margin-bottom:0;">
+						<a href="">
+							<div style="background:url(img/{{ dtgal.foto_lapangan }}) center center no-repeat;background-size:cover;width:100%;height:64px;"></div>
+							<!-- <img src="img/bglagi.jpg" height="64px"> -->
+						</a>
+					</div>
+				</div>
+				<center><p style="margin-top:8px;" class=""><a class="item-note" style="float:none;" href="">See all photos <i class="icon ion-chevron-right"></i></a></p></center>
+				<!-- <button style="margin:0;" ng-click="moreAva()" class="button button-full ink button-balanced">Selengkapnya</button> -->
 			</div>
 		</div>
-		<button ng-click="moreAva()" class="button button-full ink button-balanced">Selengkapnya</button>
-		<h4 class="greencolor border-top"><i class="icon ion-android-alarm-clock"></i> Riwayat team</h4>
-		<div class="card">
+		<p>&nbsp;</p>
+		<h5 class="greencolor">Riwayat team</h5>
+		<div ng-repeat="dtbook in dtbookingpenyedia"  class="card">
 		  	<a class="item item-icon-right">
 		  		<i class="icon ion-android-more-vertical" ui-sref="detailLapangan"></i>
-                <h2 class="greencolor">Sumarna FC</h2>
-                <p>13 jam yang lalu</p>
-            </a>
-		</div>
-
-		<div class="card">
-		  	<a class="item item-icon-right">
-		  		<i class="icon ion-android-more-vertical"></i>
-                <h2 class="greencolor">Nafas Kuda FC</h2>
-                <p>1 hari yang lalu</p>
-            </a>
-		</div>
-
-		<div class="card">
-		  	<a class="item item-icon-right">
-		  		<i class="icon ion-android-more-vertical"></i>
-                <h2 class="greencolor">Geng Kapak FC</h2>
-                <p>2 hari yang lalu</p>
+                <h2 class="greencolor">{{ dtbook.nama_team }}</h2>
+                <p>{{ dtbook.tgl_booking }}, Pukul {{ dtbook.jam_booking }}</p>
             </a>
 		</div>
 	</div>
