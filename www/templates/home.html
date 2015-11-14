@@ -30,19 +30,17 @@
 </ion-header-bar>
 <ion-content class="scroll-content ionic-scroll has-header padding expanded">
 	<br>
-		<button class="button button-block button-positive" ng-click="editModal()">Upload Sekarang</button>
-	<div class="list card">
+		<!-- <button class="button button-block button-positive" ng-click="editModal()">Upload Sekarang</button> -->
+	<div class="list card" ng-repeat="tl in dttl | limitTo:numberOfItemsToDisplay">
 		<div class="item item-avatar item-dark" style="border-bottom:solid 3px #33cd5f;">
-			<img src="img/logo.png">
-			<h2 style="color:#fff;">Rizki</h2>
-			<p style="color:#ccc;"><i class="icon ion-android-time"></i> November 13, 2015</p>
+			<img src="img/{{tl.ava_team}}">
+			<h2 style="color:#fff;">{{ tl.nama_team }}</h2>
+			<p style="color:#ccc;"><i class="icon ion-android-time"></i> {{ tl.tgl_post }}, {{ tl.jam_post }}</p>
 		</div>
 		<div class="item item-body">
-			<img class="full-image" src="img/bglagi.jpg">
+			<img class="full-image" src="img/{{ tl.foto }}">
 			<p>
-				This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-				the content is from a card-body consisting of an image and paragraph text. The footer
-				consists of tabs, icons aligned left, within the card-footer.
+				{{tl.caption}}
 			</p>
 		</div>
 		<div class="item tabs tabs-secondary tabs-icon-left" style="border-top:solid 2px #ddd;">
@@ -58,41 +56,6 @@
 	</div>
 	<h1></h1>
 
-	<div class="list card">
-		<div class="item item-avatar item-dark" style="border-bottom:solid 3px #33cd5f;">
-			<img src="img/google-material.png">
-			<h2 style="color:#fff;">Sony</h2>
-			<p style="color:#ccc;"><i class="icon ion-android-time"></i> November 13, 2015</p>
-		</div>
-
-		<div class="item item-body">
-			<img class="full-image" src="img/futsal.jpg">
-			<p>
-				This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-				the content is from a card-body consisting of an image and paragraph text. The footer
-				consists of tabs, icons aligned left, within the card-footer.
-			</p>
-		</div>
-	</div>
-	<h1></h1>
-
-	<div class="list card">
-		<div class="item item-avatar item-dark" style="border-bottom:solid 3px #33cd5f;">
-			<img src="img/ionic.png">
-			<h2 style="color:#fff;">Singgih</h2>
-			<p style="color:#ccc;"><i class="icon ion-android-time"></i> November 13, 2015</p>
-		</div>
-
-		<div class="item item-body">
-			<img class="full-image" src="img/profile-bg.jpg">
-			<p>
-				This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-				the content is from a card-body consisting of an image and paragraph text. The footer
-				consists of tabs, icons aligned left, within the card-footer.
-			</p>
-		</div>
-	</div>
-	<h1></h1>
 <script id="edit.html" type="text/ng-template">
         <div class="modal">
             <ion-header-bar class="bar-stable">

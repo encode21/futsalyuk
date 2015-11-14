@@ -113,7 +113,22 @@ angular.module('starter.controllers', [])
     }
     /*Processes*/
 })
-.controller('homeCtrl', function($scope, $stateParams,$ionicPopover,$ionicModal,$cordovaCamera, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+.controller('homeCtrl', function($scope, $stateParams,$ionicPopover,$ionicModal, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+    var id = $("#idUser").val();
+    $scope.getTeamId = function() {
+        beforeAuth.getTeamId(id).success(function(dataTeam) {
+            $scope.dataTeam = dataTeam;
+        });
+        beforeAuth.getUserId(id).success(function(dataUser) {
+            $scope.dataUser = dataUser;
+        });
+        beforeAuth.getTimeline().success(function(dttl) {
+            $scope.dttl = dttl;
+        });
+    };
+    $scope.getTeamId();
+
+    
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -129,7 +144,7 @@ angular.module('starter.controllers', [])
 
     var template =  '<ion-popover-view style="height:160px;">' +
                     '   <ion-header-bar>' +
-                    '       <h1 class="title">Sumarna Team</h1>' +
+                    '       <h1 class="title" ng-repeat="dt in dataTeam">{{ dt.nama_team }}</h1>' +
                     '   </ion-header-bar>' +
                     '   <ion-content>' +
                     '       <div class="list">' +
@@ -154,41 +169,32 @@ angular.module('starter.controllers', [])
         $scope.popover.remove();
     });
     ionicMaterialInk.displayEffect();
-    var id = $("#idUser").val();
-    $scope.getTeamId = function() {
-        beforeAuth.getTeamId(id).success(function(dataTeam) {
-            $scope.dataTeam = dataTeam;
-        });
-        beforeAuth.getUserId(id).success(function(dataUser) {
-            $scope.dataUser = dataUser;
-        });
-    };
-    $scope.getTeamId();
-    var options = { 
-        quality : 75, 
-        destinationType : Camera.DestinationType.FILE_URI, 
-        sourceType : 1, 
-        allowEdit : true,
-        encodingType: 0,
-        targetWidth: 380,
-        targetHeight: 450,
-        popoverOptions: CameraPopoverOptions,
-        saveToPhotoAlbum: false
-    };
-    $scope.takePicture = function() {
+    
+    // var options = { 
+    //     quality : 75, 
+    //     destinationType : Camera.DestinationType.FILE_URI, 
+    //     sourceType : 1, 
+    //     allowEdit : true,
+    //     encodingType: 0,
+    //     targetWidth: 380,
+    //     targetHeight: 450,
+    //     popoverOptions: CameraPopoverOptions,
+    //     saveToPhotoAlbum: false
+    // };
+    // $scope.takePicture = function() {
 
-        navigator.geolocation.getCurrentPosition(getLocCoords);
+    //     navigator.geolocation.getCurrentPosition(getLocCoords);
 
-        $cordovaCamera.getPicture(options).then(function(imageData) {
-          $scope.imgURI = imageData;
-          id ++;
-          var post = { id: id, image: $scope.imgURI }
-          // Posts.addPost(post);
-          console.log(post);
-        }),function(err) {
+    //     $cordovaCamera.getPicture(options).then(function(imageData) {
+    //       $scope.imgURI = imageData;
+    //       id ++;
+    //       var post = { id: id, image: $scope.imgURI }
+    //       // Posts.addPost(post);
+    //       console.log(post);
+    //     }),function(err) {
 
-        };
-    }
+    //     };
+    // }
     $ionicModal.fromTemplateUrl('edit.html', function(modal){
         $scope.taskModal = modal;
     }, {
