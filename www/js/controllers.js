@@ -128,7 +128,6 @@ angular.module('starter.controllers', [])
     };
     $scope.getTeamId();
 
-    
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -145,16 +144,16 @@ angular.module('starter.controllers', [])
     /*popover*/
 
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:160px;">' +
+    var template =  '<ion-popover-view style="height:200px;">' +
                     '   <ion-header-bar>' +
-                    '       <h1 class="title" ng-repeat="dt in dataTeam">{{ dt.nama_team }}</h1>' +
+                    '       <h1 class="title">Sumarna Team</h1>' +
                     '   </ion-header-bar>' +
                     '   <ion-content>' +
                     '       <div class="list">' +
-                    '            <a class="item item-icon-left">' +
+                    '            <a ui-sref="profile" class="item item-icon-left">' +
                     '                <i class="icon ion-android-person"></i> Profile' +
                     '           </a>' +
-                    '           <a class="item item-icon-left">' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
                     '               <i class="icon ion-android-settings"></i> Pengaturan' +
                     '           </a>' +
                     '           <a class="item item-icon-left">' +
@@ -508,6 +507,80 @@ angular.module('starter.controllers', [])
     $scope.$on('$destroy', function() {
         $scope.popover.remove();
     });
+})
+.controller('profile', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+    var id = $("#idUser").val();
+    $scope.getTeamId = function() {
+        beforeAuth.getTeamId(id).success(function(dataTeam) {
+            $scope.dataTeam = dataTeam;
+        });
+        beforeAuth.getUserId(id).success(function(dataUser) {
+            $scope.dataUser = dataUser;
+        });
+        beforeAuth.getTimeline().success(function(dttl) {
+            $scope.dttl = dttl;
+        });
+    };
+    $scope.getTeamId();
+
+    // Set Motion
+    $timeout(function() {
+        ionicMaterialMotion.slideUp({
+            selector: '.slide-up'
+        });
+    }, 0);
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
+    /*popover*/
+
+    // .fromTemplate() method
+    var template =  '<ion-popover-view style="height:200px;">' +
+                    '   <ion-header-bar>' +
+                    '       <h1 class="title">Sumarna Team</h1>' +
+                    '   </ion-header-bar>' +
+                    '   <ion-content>' +
+                    '       <div class="list">' +
+                    '            <a ui-sref="profile" class="item item-icon-left">' +
+                    '                <i class="icon ion-android-person"></i> Profile' +
+                    '           </a>' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '           </a>' +
+                    '           <a class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
+                    '            </a>' +
+                    '        </div>' +
+                    '   </ion-content>' +
+                    '</ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+
+    ionicMaterialInk.displayEffect();
+
+    var id = $("#idUser").val();
+    $scope.getTeamId = function() {
+        beforeAuth.getTeamId(id).success(function(dataTeam) {
+            $scope.dataTeam = dataTeam;
+        });
+        beforeAuth.getUserId(id).success(function(dataUser) {
+            $scope.dataUser = dataUser;
+        });
+    };
+    $scope.getTeamId();
 })
 .controller('akunCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {

@@ -57,6 +57,11 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     url: '/akun',
     templateUrl: 'templates/akun.html',
     controller: 'akunCtrl'
+  })
+  .state('profile',{
+    url: '/profile',
+    templateUrl: 'templates/profile.html',
+    controller: 'profile'
   });
   $urlRouterProvider.otherwise("/");
 })
