@@ -113,7 +113,7 @@ angular.module('starter.controllers', [])
     }
     /*Processes*/
 })
-.controller('homeCtrl', function($scope, $stateParams,$ionicPopover, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+.controller('homeCtrl', function($scope, $stateParams,$ionicPopover,$ionicModal,$cordovaCamera, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -164,6 +164,46 @@ angular.module('starter.controllers', [])
         });
     };
     $scope.getTeamId();
+    var options = { 
+        quality : 75, 
+        destinationType : Camera.DestinationType.FILE_URI, 
+        sourceType : 1, 
+        allowEdit : true,
+        encodingType: 0,
+        targetWidth: 380,
+        targetHeight: 450,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false
+    };
+    $scope.takePicture = function() {
+
+        navigator.geolocation.getCurrentPosition(getLocCoords);
+
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+          $scope.imgURI = imageData;
+          id ++;
+          var post = { id: id, image: $scope.imgURI }
+          // Posts.addPost(post);
+          console.log(post);
+        }),function(err) {
+
+        };
+    }
+    $ionicModal.fromTemplateUrl('edit.html', function(modal){
+        $scope.taskModal = modal;
+    }, {
+        scope : $scope,
+        animation : 'slide-in-up'   
+    });
+    $scope.editModal = function(){
+        $scope.taskModal.show();
+    };
+    
+    $scope.batal = function(){
+        $scope.taskModal.hide();
+        $scope.showDataId();
+    };
+
 })
 .controller('registerCtrl', function($scope,$ionicPopover, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
