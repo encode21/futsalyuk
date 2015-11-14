@@ -2,7 +2,7 @@ angular.module('starter.service', [])
 
 .factory('beforeAuth', function($http) {
     // var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
-    var baseUrl = 'http://192.168.1.105/ionic_projects/futsalservice/index.php/main/';
+    var baseUrl = 'http://futsalservice.6te.net/index.php/main/';
     return {
         getUserId: function (uId){
             return $http.get(baseUrl+'datauser?id_user='+uId); 

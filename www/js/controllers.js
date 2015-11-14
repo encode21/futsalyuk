@@ -127,7 +127,7 @@ angular.module('starter.controllers', [])
         });
     }, 700);
 
-     var template =  '<ion-popover-view style="height:160px;">' +
+    var template =  '<ion-popover-view style="height:160px;">' +
                     '   <ion-header-bar>' +
                     '       <h1 class="title">Sumarna Team</h1>' +
                     '   </ion-header-bar>' +
@@ -290,12 +290,19 @@ angular.module('starter.controllers', [])
     /*popover*/
 
     // .fromTemplate() method
-    var template =  '<ion-popover-view>' +
+    var template =  '<ion-popover-view style="height:160px;">' +
                     '   <ion-header-bar>' +
-                    '       <h1 class="title">My Popover Title</h1>' +
+                    '       <h1 class="title">Sumarna Team</h1>' +
                     '   </ion-header-bar>' +
-                    '   <ion-content class="padding">' +
-                    '       My Popover Contents' +
+                    '   <ion-content>' +
+                    '       <div class="list">' +
+                    '            <a class="item item-icon-left">' +
+                    '                <i class="icon ion-android-person"></i> Profile' +
+                    '           </a>' +
+                    '           <a class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Logout' +
+                    '            </a>' +
+                    '        </div>' +
                     '   </ion-content>' +
                     '</ion-popover-view>';
 
@@ -344,19 +351,25 @@ angular.module('starter.controllers', [])
     /*popover*/
     // console.log(idnya);
 
-    var template =  '<ion-popover-view>' +
+    var template =  '<ion-popover-view style="height:160px;">' +
                     '   <ion-header-bar>' +
-                    '       <h1 class="title">My Popover Title</h1>' +
+                    '       <h1 class="title">Sumarna Team</h1>' +
                     '   </ion-header-bar>' +
-                    '   <ion-content class="padding">' +
-                    '       My Popover Contents' +
+                    '   <ion-content>' +
+                    '       <div class="list">' +
+                    '            <a class="item item-icon-left">' +
+                    '                <i class="icon ion-android-person"></i> Profile' +
+                    '           </a>' +
+                    '           <a class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Logout' +
+                    '            </a>' +
+                    '        </div>' +
                     '   </ion-content>' +
                     '</ion-popover-view>';
 
     $scope.popover = $ionicPopover.fromTemplate(template, {
         scope: $scope
     });
-
     $scope.closePopover = function() {
         $scope.popover.hide();
     };
