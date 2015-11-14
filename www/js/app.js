@@ -47,6 +47,16 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     url: '/sewa/:dtId_penyedia',
     templateUrl: 'templates/detail.html',
     controller: 'detailLapangan'
+  })
+  .state('setting',{
+    url: '/setting',
+    templateUrl: 'templates/setting.html',
+    controller: 'setting'
+  })
+  .state('akun',{
+    url: '/akun',
+    templateUrl: 'templates/akun.html',
+    controller: 'akunCtrl'
   });
   $urlRouterProvider.otherwise("/");
 })

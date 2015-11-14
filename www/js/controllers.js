@@ -97,7 +97,7 @@ angular.module('starter.controllers', [])
                         window.location='#/home';
                     }else if (data.statusUser=='penyedia') {
                         var id= $("#idUser").val(data.id);
-                        window.location='#/penyedia';
+                        window.location='#/home';
                     }
                 }
                 $("#formlogin")[0].reset();
@@ -113,9 +113,8 @@ angular.module('starter.controllers', [])
     }
     /*Processes*/
 })
-.controller('homeCtrl', function($scope, $stateParams,$ionicPopover,$ionicModal,$cordovaCamera, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
-    // Set Motion
-    $timeout(function() {
+.controller('homeCtrl', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+        $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
         });
@@ -126,7 +125,10 @@ angular.module('starter.controllers', [])
             startVelocity: 3000
         });
     }, 700);
+    ionicMaterialInk.displayEffect();
+    /*popover*/
 
+    // .fromTemplate() method
     var template =  '<ion-popover-view style="height:160px;">' +
                     '   <ion-header-bar>' +
                     '       <h1 class="title">Sumarna Team</h1>' +
@@ -137,7 +139,10 @@ angular.module('starter.controllers', [])
                     '                <i class="icon ion-android-person"></i> Profile' +
                     '           </a>' +
                     '           <a class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Logout' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '           </a>' +
+                    '           <a class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
                     '            </a>' +
                     '        </div>' +
                     '   </ion-content>' +
@@ -153,6 +158,7 @@ angular.module('starter.controllers', [])
     $scope.$on('$destroy', function() {
         $scope.popover.remove();
     });
+
     ionicMaterialInk.displayEffect();
     var id = $("#idUser").val();
     $scope.getTeamId = function() {
@@ -175,20 +181,6 @@ angular.module('starter.controllers', [])
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: false
     };
-    $scope.takePicture = function() {
-
-        navigator.geolocation.getCurrentPosition(getLocCoords);
-
-        $cordovaCamera.getPicture(options).then(function(imageData) {
-          $scope.imgURI = imageData;
-          id ++;
-          var post = { id: id, image: $scope.imgURI }
-          // Posts.addPost(post);
-          console.log(post);
-        }),function(err) {
-
-        };
-    }
     $ionicModal.fromTemplateUrl('edit.html', function(modal){
         $scope.taskModal = modal;
     }, {
@@ -330,7 +322,7 @@ angular.module('starter.controllers', [])
     /*popover*/
 
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:160px;">' +
+    var template =  '<ion-popover-view style="height:200px;">' +
                     '   <ion-header-bar>' +
                     '       <h1 class="title">Sumarna Team</h1>' +
                     '   </ion-header-bar>' +
@@ -339,8 +331,11 @@ angular.module('starter.controllers', [])
                     '            <a class="item item-icon-left">' +
                     '                <i class="icon ion-android-person"></i> Profile' +
                     '           </a>' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '           </a>' +
                     '           <a class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Logout' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
                     '            </a>' +
                     '        </div>' +
                     '   </ion-content>' +
@@ -401,6 +396,9 @@ angular.module('starter.controllers', [])
                     '                <i class="icon ion-android-person"></i> Profile' +
                     '           </a>' +
                     '           <a class="item item-icon-left">' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '            </a>' +
+                    '           <a class="item item-icon-left">' +
                     '               <i class="icon ion-log-out"></i> Logout' +
                     '            </a>' +
                     '        </div>' +
@@ -432,4 +430,64 @@ angular.module('starter.controllers', [])
         });
     };
     $scope.tempatfutsalid();
+})
+.controller('setting', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+    $timeout(function() {
+        ionicMaterialMotion.slideUp({
+            selector: '.slide-up'
+        });
+    }, 0);
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
+    /*popover*/
+
+    // .fromTemplate() method
+    var template =  '<ion-popover-view style="height:200px;">' +
+                    '   <ion-header-bar>' +
+                    '       <h1 class="title">Sumarna Team</h1>' +
+                    '   </ion-header-bar>' +
+                    '   <ion-content>' +
+                    '       <div class="list">' +
+                    '            <a class="item item-icon-left">' +
+                    '                <i class="icon ion-android-person"></i> Profile' +
+                    '           </a>' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '           </a>' +
+                    '           <a class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
+                    '            </a>' +
+                    '        </div>' +
+                    '   </ion-content>' +
+                    '</ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+})
+.controller('akunCtrl', function($scope, $stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+    $timeout(function() {
+        ionicMaterialMotion.slideUp({
+            selector: '.slide-up'
+        });
+    }, 0);
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
 })
