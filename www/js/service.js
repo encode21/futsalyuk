@@ -1,8 +1,8 @@
 angular.module('starter.service', [])
 
 .factory('beforeAuth', function($http) {
-    // var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
     var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
+    // var baseUrl = 'http://futsalservice.6te.net/index.php/main/';
     return {
         getUserId: function (uId){
             return $http.get(baseUrl+'datauser?id_user='+uId); 
@@ -25,6 +25,13 @@ angular.module('starter.service', [])
             });
         },
         /*After Login*/
+        getTimeline: function() {
+            
+            return $http.get(baseUrl+'ambil_timeline',function(response) {
+                $scope.newMessage = response.data.queries.request.totalResults;
+                $scope.messages.push($scope.newMessage);
+            });
+        },
         get_tempatFutsal: function() {
             return $http.get(baseUrl+'ambil_tempatfutsal');
         },
