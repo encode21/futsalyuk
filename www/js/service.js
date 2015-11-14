@@ -1,7 +1,8 @@
 angular.module('starter.service', [])
 
 .factory('beforeAuth', function($http) {
-    var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
+    // var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
+    var baseUrl = 'http://192.168.1.105/ionic_projects/futsalservice/index.php/main/';
     return {
         getUserId: function (uId){
             return $http.get(baseUrl+'datauser?id_user='+uId); 
@@ -22,6 +23,19 @@ angular.module('starter.service', [])
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8;'
                 }
             });
+        },
+        /*After Login*/
+        get_tempatFutsal: function() {
+            return $http.get(baseUrl+'ambil_tempatfutsal');
+        },
+        get_tempatFutsalid: function(idLap) {
+            return $http.get(baseUrl+'ambil_tempatfutsalid?id_lap='+idLap);
+        },
+        get_bookingpenyedia: function(id) {
+            return $http.get(baseUrl+'ambil_bookingdipenyedia?id_penyedia='+id);
+        },
+        ambil_gallerylapanganLim: function(id) {
+            return $http.get(baseUrl+'ambil_gallerylapanganLim?id_lap='+id);
         }
     };
     

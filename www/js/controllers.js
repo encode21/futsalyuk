@@ -79,7 +79,8 @@ angular.module('starter.controllers', [])
             }).success(function(data){
                 
                 // $scope.hideLoader();
-                // console.log(data);
+                // var dt = $.parseJSON(data);
+                console.log(data);
                 if (data.msg=='error_auth') {
                     $scope.showAlertError({
                         title: "Error",
@@ -93,10 +94,10 @@ angular.module('starter.controllers', [])
                     if (data.statusUser=='penyewa') {
                         var id= $("#idUser").val(data.id);
                         // console.log(id);
-                        window.location='#/profile';
+                        window.location='#/home';
                     }else if (data.statusUser=='penyedia') {
                         var id= $("#idUser").val(data.id);
-                        window.location='#/penyedia'
+                        window.location='#/penyedia';
                     }
                 }
                 $("#formlogin")[0].reset();
@@ -112,7 +113,7 @@ angular.module('starter.controllers', [])
     }
     /*Processes*/
 })
-.controller('homeCtrl', function($scope, $stateParams,$ionicPopover, $timeout,ionicMaterialMotion,ionicMaterialInk){
+.controller('homeCtrl', function($scope, $stateParams,$ionicPopover, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -246,7 +247,7 @@ angular.module('starter.controllers', [])
         }
     } 
 })
-.controller('sewaCtrl', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk) {
+.controller('sewaCtrl', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
@@ -258,9 +259,39 @@ angular.module('starter.controllers', [])
             startVelocity: 3000
         });
     }, 700);
-    ionicMaterialInk.displayEffect(); 
+    ionicMaterialInk.displayEffect();
+    /*popover*/
+
+    // .fromTemplate() method
+    var template =  '<ion-popover-view>' +
+                    '   <ion-header-bar>' +
+                    '       <h1 class="title">My Popover Title</h1>' +
+                    '   </ion-header-bar>' +
+                    '   <ion-content class="padding">' +
+                    '       My Popover Contents' +
+                    '   </ion-content>' +
+                    '</ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+
+    // Get Lapangan
+    $scope.tempatfutsal = function() {
+        beforeAuth.get_tempatFutsal().success(function(dtlap) {
+            $scope.dtlap = dtlap;
+        });
+    };
+    $scope.tempatfutsal();
 })
-.controller('detailLapangan', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk) {
+.controller('detailLapangan', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
@@ -273,4 +304,52 @@ angular.module('starter.controllers', [])
         });
     }, 700);
     ionicMaterialInk.displayEffect(); 
+    $scope.showPopup = function() {
+        var alertPopup = $ionicPopup.alert({
+            title: 'You are now my subscribed to Cat Facts',
+            template: 'You will meow receive fun daily facts about CATS!'
+        });
+
+        $timeout(function() {
+            ionicMaterialInk.displayEffect();
+        }, 0);
+    };
+    /*popover*/
+    // console.log(idnya);
+
+    var template =  '<ion-popover-view>' +
+                    '   <ion-header-bar>' +
+                    '       <h1 class="title">My Popover Title</h1>' +
+                    '   </ion-header-bar>' +
+                    '   <ion-content class="padding">' +
+                    '       My Popover Contents' +
+                    '   </ion-content>' +
+                    '</ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+    var idnya = $stateParams.dtId_penyedia;
+    console.log(idnya);
+    // Get detail lapangan
+    $scope.tempatfutsalid = function() {
+        beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
+            $scope.dtlapdetail = dtlapdetail;
+        });
+        beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
+            $scope.dtbookingpenyedia = dtbookingpenyedia;
+        });
+        beforeAuth.ambil_gallerylapanganLim(idnya).success(function(dtgallery) {
+            $scope.dtgallery = dtgallery;
+        });
+    };
+    $scope.tempatfutsalid();
 })

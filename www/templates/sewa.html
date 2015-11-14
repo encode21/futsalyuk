@@ -11,7 +11,7 @@
 	<div class="title title-left header-item">Sewa</div>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
-			<button type="submit" class="custom-right-button button button-icon button-clear ion-android-more-vertical" id="menu-popover" ng-click="popover.show($event)"></button>
+			<button type="submit" class="custom-right-button button button-icon button-clear ion-android-more-vertical" id="menu-popover" ng-click="popover()"></button>
 		</span>
 	</div>
 </ion-header-bar>
@@ -44,15 +44,16 @@
 
 		<p class="padding-horizontal" style="padding-top:20px;text-transform: uppercase;color:#555;border-bottom:solid 1px #999;width:100%;">Lapangan futsal<label style="float:right;font-size:12px;color:#bbb;">Regional</label></p>
 		<h1></h1>
-		<div class="card">
-		  	<a class="item item-icon-right">
-		  		<i class="icon ion-chevron-right" ui-sref="detailLapangan"></i>
-                <h2 class="greencolor">Libero</h2>
-                <p>Jl. Margonda Raya, Pancoran MAS, Kota Depok, Jawa Barat 16431, Indonesia</p>
+		<div class="card" ng-repeat="dt in dtlap">
+		  	<a class="item item-icon-right" href="#/sewa/{{dt.id_penyedia}}">
+		  		<i class="icon ion-chevron-right"></i>
+                <h2 class="greencolor">{{ dt.nama_penyedia }}</h2>
+                <p>{{ dt.alamat }}</p>
+                <!-- <p>{{ dt.id_penyedia }}</p> -->
             </a>
 		</div>
 
-		<div class="card">
+		<!-- <div class="card">
 		  	<a class="item item-icon-right">
 		  		<i class="icon ion-chevron-right"></i>
                 <h2 class="greencolor">Sintia Futsal</h2>
@@ -66,7 +67,7 @@
                 <h2 class="greencolor">Liverpool Futsal</h2>
                 <p>Jl. Cengkeh No.5, Beji, Kota Depok, Jawa Barat 16424, Indonesia</p>
             </a>
-		</div>
+		</div> -->
 	</div>
 </div>	
 </ion-content>
