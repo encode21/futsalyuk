@@ -156,7 +156,7 @@ angular.module('starter.controllers', [])
                     '           <a ui-sref="setting" class="item item-icon-left">' +
                     '               <i class="icon ion-android-settings"></i> Pengaturan' +
                     '           </a>' +
-                    '           <a class="item item-icon-left">' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
                     '               <i class="icon ion-log-out"></i> Keluar' +
                     '            </a>' +
                     '        </div>' +
@@ -187,31 +187,6 @@ angular.module('starter.controllers', [])
     };
     $scope.getTeamId();
     
-    // var options = { 
-    //     quality : 75, 
-    //     destinationType : Camera.DestinationType.FILE_URI, 
-    //     sourceType : 1, 
-    //     allowEdit : true,
-    //     encodingType: 0,
-    //     targetWidth: 380,
-    //     targetHeight: 450,
-    //     popoverOptions: CameraPopoverOptions,
-    //     saveToPhotoAlbum: false
-    // };
-    // $scope.takePicture = function() {
-
-    //     navigator.geolocation.getCurrentPosition(getLocCoords);
-
-    //     $cordovaCamera.getPicture(options).then(function(imageData) {
-    //       $scope.imgURI = imageData;
-    //       id ++;
-    //       var post = { id: id, image: $scope.imgURI }
-    //       // Posts.addPost(post);
-    //       console.log(post);
-    //     }),function(err) {
-
-    //     };
-    // }
     $ionicModal.fromTemplateUrl('edit.html', function(modal){
         $scope.taskModal = modal;
     }, {
@@ -365,7 +340,7 @@ angular.module('starter.controllers', [])
                     '           <a ui-sref="setting" class="item item-icon-left">' +
                     '               <i class="icon ion-android-settings"></i> Pengaturan' +
                     '           </a>' +
-                    '           <a class="item item-icon-left">' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
                     '               <i class="icon ion-log-out"></i> Keluar' +
                     '            </a>' +
                     '        </div>' +
@@ -403,21 +378,10 @@ angular.module('starter.controllers', [])
             startVelocity: 3000
         });
     }, 700);
-    ionicMaterialInk.displayEffect(); 
-    $scope.showPopup = function() {
-        var alertPopup = $ionicPopup.alert({
-            title: 'You are now my subscribed to Cat Facts',
-            template: 'You will meow receive fun daily facts about CATS!'
-        });
-
-        $timeout(function() {
-            ionicMaterialInk.displayEffect();
-        }, 0);
-    };
     /*popover*/
-    // console.log(idnya);
 
-    var template =  '<ion-popover-view style="height:160px;">' +
+    // .fromTemplate() method
+    var template =  '<ion-popover-view style="height:200px;">' +
                     '   <ion-header-bar>' +
                     '       <h1 class="title">Sumarna Team</h1>' +
                     '   </ion-header-bar>' +
@@ -426,11 +390,11 @@ angular.module('starter.controllers', [])
                     '            <a class="item item-icon-left">' +
                     '                <i class="icon ion-android-person"></i> Profile' +
                     '           </a>' +
-                    '           <a class="item item-icon-left">' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
                     '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '            </a>' +
-                    '           <a class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Logout' +
+                    '           </a>' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
                     '            </a>' +
                     '        </div>' +
                     '   </ion-content>' +
@@ -446,6 +410,18 @@ angular.module('starter.controllers', [])
     $scope.$on('$destroy', function() {
         $scope.popover.remove();
     });
+    ionicMaterialInk.displayEffect(); 
+    $scope.showPopup = function() {
+        var alertPopup = $ionicPopup.alert({
+            title: 'You are now my subscribed to Cat Facts',
+            template: 'You will meow receive fun daily facts about CATS!'
+        });
+
+        $timeout(function() {
+            ionicMaterialInk.displayEffect();
+        }, 0);
+    };
+    
     var idnya = $stateParams.dtId_penyedia;
     console.log(idnya);
     // Get detail lapangan
@@ -490,7 +466,7 @@ angular.module('starter.controllers', [])
                     '           <a ui-sref="setting" class="item item-icon-left">' +
                     '               <i class="icon ion-android-settings"></i> Pengaturan' +
                     '           </a>' +
-                    '           <a class="item item-icon-left">' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
                     '               <i class="icon ion-log-out"></i> Keluar' +
                     '            </a>' +
                     '        </div>' +
@@ -551,7 +527,7 @@ angular.module('starter.controllers', [])
                     '           <a ui-sref="setting" class="item item-icon-left">' +
                     '               <i class="icon ion-android-settings"></i> Pengaturan' +
                     '           </a>' +
-                    '           <a class="item item-icon-left">' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
                     '               <i class="icon ion-log-out"></i> Keluar' +
                     '            </a>' +
                     '        </div>' +
