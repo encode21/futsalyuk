@@ -42,6 +42,11 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     url: '/sewa',
     templateUrl: 'templates/sewa.html',
     controller: 'sewaCtrl'
+  })
+  .state('detail-lapangan',{
+    url: '/detail-lapangan',
+    templateUrl: 'templates/detail-lapangan.html',
+    controller: 'detailLapanganCtrl'
   });
   $urlRouterProvider.otherwise("/");
 })

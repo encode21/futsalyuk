@@ -1,0 +1,99 @@
+<ion-view data-title="Futsal Yuk!" style="background:#f1f1f1;">
+<ion-header-bar class="bar-dark bar bar-header disable-user-behavior" align-title="center">
+	<div class="buttons buttons-left header-item">
+		<span class="left-buttons">
+			<a href="javascript:history.go(-1);">
+				<button class="button button-icon button-clear ion-arrow-left-c" menu-toggle="left"></button>
+			</a>
+			<span class="border-right"></span>
+		</span>
+	</div>
+	<div class="title title-left header-item">Sewa</div>
+	<div class="buttons buttons-right header-item">
+		<span class="right-buttons">
+			<button type="submit" class="custom-right-button button button-icon button-clear ion-android-more-vertical" id="menu-popover" ng-click="popover.show($event)"></button>
+		</span>
+	</div>
+</ion-header-bar>
+<ion-header-bar class="bar-stable bar bar-header disable-user-behavior" style="margin-top:44px;" align-title="center">
+	<div class="tabs tabs-light static" style="">
+		<a class="tab-item ink hvr-underline-from-center">
+            Home
+        </a>
+        <a class="tab-item ink hvr-underline-from-center">
+            Sewa
+        </a>
+        <a class="tab-item ink hvr-underline-from-center">
+            Pesan
+        </a>
+	</div>
+</ion-header-bar>
+<ion-content scroll="true" class="scroll-content ionic-scroll  has-header" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+<div class="hero slide-up" style="background-image: url('img/bglagi.jpg');margin-top:50px;">
+	<div class="content item-icon-top padding">
+		<div class="card" style="background:rgba(5,5,5,.8);">
+		  	<div class="item item-body">
+			    <!-- <center><img class="avatar" src="img/man.png"></center> -->
+			    <p class="greencolor">Libero Futsal</p>
+			    <p class="whitecolor">
+			      	This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+			      	the content is from a card-body consisting of an image and paragraph text. The 	
+			    </p>
+			</div>
+	  	</div>
+	</div>
+</div>
+<div class="col responsive-sm">
+	<div class="content padding">
+		<h4 class="greencolor"><i class="icon ion-images"></i> Gallery Thumbnail</h4>
+		<div class="row conte">
+			<div class="col" style="padding:0 10px 0 10px;">
+				<a href="">
+					<img src="img/bglagi.jpg" style="border-radius:5px;width:64px;height:64px;">
+				</a>
+			</div>
+			<div class="col" style="padding:0 10px 0 10px;">
+				<a href="">
+					<img src="img/profile-bg.jpg" style="border-radius:5px;width:64px;height:64px;">
+				</a>
+			</div>
+			<div class="col" style="padding:0 10px 0 10px;">
+				<a href="">
+					<img src="img/futsal.jpg" style="border-radius:5px;width:64px;height:64px;">
+				</a>
+			</div>
+			<div class="col" style="padding:0 10px 0 10px;">
+				<a href="">
+					<img src="img/1.jpg" style="border-radius:5px;width:64px;height:64px;">
+				</a>
+			</div>
+		</div>
+		<button ng-click="moreAva()" class="button button-full ink button-balanced">Selengkapnya</button>
+		<h4 class="greencolor border-top"><i class="icon ion-android-alarm-clock"></i> Riwayat team</h4>
+		<div class="card">
+		  	<a class="item item-icon-right">
+		  		<i class="icon ion-android-more-vertical" ui-sref="detailLapangan"></i>
+                <h2 class="greencolor">Sumarna FC</h2>
+                <p>13 jam yang lalu</p>
+            </a>
+		</div>
+
+		<div class="card">
+		  	<a class="item item-icon-right">
+		  		<i class="icon ion-android-more-vertical"></i>
+                <h2 class="greencolor">Nafas Kuda FC</h2>
+                <p>1 hari yang lalu</p>
+            </a>
+		</div>
+
+		<div class="card">
+		  	<a class="item item-icon-right">
+		  		<i class="icon ion-android-more-vertical"></i>
+                <h2 class="greencolor">Geng Kapak FC</h2>
+                <p>2 hari yang lalu</p>
+            </a>
+		</div>
+	</div>
+</div>	
+</ion-content>
+</ion-view>
