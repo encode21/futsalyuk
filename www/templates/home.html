@@ -30,6 +30,7 @@
 </ion-header-bar>
 <ion-content class="scroll-content ionic-scroll has-header padding expanded">
 	<br>
+		<button class="button button-block button-positive" ng-click="editModal()">Upload Sekarang</button>
 	<div class="list card">
 		<div class="item item-avatar item-dark" style="border-bottom:solid 3px #33cd5f;">
 			<img src="img/logo.png">
@@ -92,5 +93,31 @@
 		</div>
 	</div>
 	<h1></h1>
+<script id="edit.html" type="text/ng-template">
+        <div class="modal">
+            <ion-header-bar class="bar-stable">
+                <button class="button button-icon icon ion-ios7-close-outline" ng-click="batal()"></button>
+                <h1 class="title"> Upload BAru</h1>
+            </ion-header-bar>
+            <ion-content>
+                <form>
+                    <div class="list">
+                        <label class="item item-input">
+                        <span class="input-label">ID :</span>
+                            <input type="text" placeholder="" ng-model="id" init-from-form>
+                        </label>
+                        <label class="item item-input">
+                        <span class="input-label">Nama :</span>
+                            // <input type="text" placeholder="" ng-model="nama" value="" init-from-form>
+                            <button ng-click="takePicture()">Gambar</button>
+                        </label>
+                        <button class="button button-positive button-block">
+                            Save
+                        </button>
+                    </div>
+                </form>
+        </ion-content>
+        </div>
+</script>
 </ion-content>
 </ion-view>
