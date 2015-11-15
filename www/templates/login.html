@@ -21,12 +21,20 @@
 		<form id="formlogin" method="post">
 	    <div class="list card stable-bg" style="background-color:#fff;">
             <div class="item item-body">
-				<label class="item item-input" style="border-bottom:solid 1px #ddd;">
+				<!-- <label class="item item-input" style="border-bottom:solid 1px #ddd;">
 					<input ng-model="flogin.username" class="text-color" type="text" placeholder="Nama pengguna">
-				</label>
-	        	<label class="item item-input">
+				</label> -->
+	        	<!-- <label class="item item-input">
 	          		<input ng-model="flogin.password" class="text-color" type="password" placeholder="Kata sandi">
-	        	</label>
+	        	</label> -->
+				<label class="item item-input item-floating-label">
+				    <span class="input-label greencolor">Nama Pengguna</span>
+				    <input ng-model="flogin.username" class="" type="text" placeholder="Nama pengguna">
+				</label>
+				<label class="item item-input item-floating-label">
+				    <span class="input-label greencolor">Password</span>
+				    <input ng-model="flogin.password" class="" type="password" placeholder="Kata sandi">
+				</label>
            	</div>
             <div class="button-bar bar-light button-bar-login" style="border-top:solid 2px #ddd;">
 	    		<a class="button button-raised ink-dark custom">Lupa kata sandi?</a>
