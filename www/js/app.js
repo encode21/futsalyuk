@@ -62,6 +62,11 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     url: '/profile',
     templateUrl: 'templates/profile.html',
     controller: 'profile'
+  })
+  .state('pesan',{
+    url: '/pesan',
+    templateUrl: 'templates/pesan_team.html',
+    controller: 'pesanTeam'
   });
   $urlRouterProvider.otherwise("/");
 })
