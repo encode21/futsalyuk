@@ -650,6 +650,42 @@ angular.module('starter.controllers', [])
     $scope.$on('$destroy', function() {
         $scope.popover.remove();
     });
+    ionicMaterialInk.displayEffect();
+})
+.controller('list_pesan', function($scope, $ionicPopover,$stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
+    /*popover*/
+    // .fromTemplate() method
+    var template =  '<ion-popover-view style="height:165px;">' +
+                    '   <ion-content>' +
+                    '       <div class="list">' +
+                    '            <a ui-sref="profile" class="item item-icon-left">' +
+                    '                <i class="icon ion-android-person"></i> Profile' +
+                    '           </a>' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '           </a>' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
+                    '            </a>' +
+                    '        </div>' +
+                    '   </ion-content>' +
+                    '</ion-popover-view>';
 
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
     ionicMaterialInk.displayEffect();
 })
