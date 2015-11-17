@@ -8,8 +8,8 @@
 			<span class="border-right"></span>
 		</span>
 	</div>
-	<div class="title header-item title-left list" style="margin-left:-70px;margin-top:">
-		<a class="item item-avatar" style="margin-top:-15.5px;">
+	<div class="title header-item title-left list" style="margin-left:-70px;">
+		<a class="item item-avatar" style="margin-top:-15px;">
 			<img src="img/man.png">
 			<div>
 			<h2 class="whitecolor" style="margin-left:-25px;">Sumarna Team</h2>
@@ -19,20 +19,21 @@
 	</div>
 	<div class="buttons buttons-right header-item">
 		<span>
-			<button type="submit" class="custom-right-button button button-icon button-clear ion-android-call"></button>
+			<button ui-sref="setting" type="submit" class="custom-right-button button button-icon button-clear ion-android-call"></button>
 		</span>
 		<span class="right-buttons">
 			<button type="submit" class="custom-right-button button button-icon button-clear ion-android-more-vertical" id="menu-popover" ng-click="popover.show($event)"></button>
 		</span>
 	</div>
 </ion-header-bar>
-<ion-content scroll="true">
-<div class="col ">
+<ion-content style="margin-bottom:25px;">
+<ion-scroll zooming="true" direction="y" style="height:100%;">
+<div class="col">
 	<div class="content list">
 		<div class="item item-avatar">
 			<img src="img/man.png">
-			<p class="whitecolor" style="margin-left:-25px;">Sumarna Team</p>
-			<div class="card" style="margin-left:-25px;margin-top:0;">
+			<b class="arrow-left"></b>
+			<div class="card left" style="margin-left:-25px;margin-top:0;">
 				<div class="item item-text-wrap">
 					This is a basic Card whichs 
 					<span class="item-note">
@@ -40,6 +41,8 @@
 				    </span>
 				</div>
 			</div>
+
+			<b class="arrow-left"></b>
 			<div class="card" style="margin-left:-25px;">
 				<div class="item item-text-wrap">
 					This is a basic Card which contains an item that has wrapping text. 
@@ -47,7 +50,26 @@
 					This is a basic Card which contains an item that has wrapping text. 
 					This is a basic Card which contains an item that has wrapping text. 
 					This is a basic Card which contains an item that has wrapping text. 
-					
+					<span class="item-note">
+				    	10:35
+				    </span>
+				</div>
+			</div>
+
+			<b class="arrow-left"></b>
+			<div class="card left" style="margin-left:-25px;margin-top:0;">
+				<div class="item item-text-wrap">
+					This is a basic Card whichs 
+					<span class="item-note">
+				    	10:35
+				    </span>
+				</div>
+			</div>
+
+			<b class="arrow-left"></b>
+			<div class="card left" style="margin-left:-25px;margin-top:0;">
+				<div class="item item-text-wrap">
+					This is a basic Card whichs 
 					<span class="item-note">
 				    	10:35
 				    </span>
@@ -56,7 +78,17 @@
 		</div>	
 
 		<div class="item" style="margin-top:-20px;">
-			<p class="whitecolor" align="right" style="margin-right:10px;">NK-Corp Team</p>
+			<b class="arrow-right"></b>
+			<div class="card" style="background-color:#ccff90;margin-top:0;">
+				<div class="item item-text-wrap">
+					This is a basic Card whichs This is a basic Card whichs This is a basic Card whichs
+					<span class="item-note">
+				    	10:35
+				    </span>
+				</div>
+			</div>
+
+			<b class="arrow-right"></b>
 			<div class="card" style="background-color:#ccff90;margin-top:0;">
 				<div class="item item-text-wrap">
 					This is a basic Card whichs This is a basic Card whichs This is a basic Card whichs
@@ -69,7 +101,8 @@
 
 		<div class="item item-avatar" style="margin-top:-20px;">
 			<img src="img/man.png">
-			<p class="whitecolor" style="margin-left:-25px;">Sumarna Team</p>
+			<!-- <p class="whitecolor" style="margin-left:-25px;">Sumarna Team</p> -->
+			<b class="arrow-left"></b>
 			<div class="card" style="margin-left:-25px;margin-top:0;">
 				<div class="item item-text-wrap">
 					This is a basic Card whichs 
@@ -81,6 +114,7 @@
 		</div>
 	</div>
 </div>
+</ion-scroll>
 </ion-content>
 <div class="bar bar-footer bar-light item-input-inset">
 	<div class="buttons buttons-left header-item">
@@ -95,7 +129,7 @@
 	</label>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
-			<button type="submit" class="custom-right-button button button-icon button-clear icon ion-android-send" id="menu-popover" ng-click="popover.show($event)"></button>
+			<button type="submit" class="custom-right-button button button-icon button-clear icon ion-android-send"></button>
 		</span>
 	</div>
 </div>

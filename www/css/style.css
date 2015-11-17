@@ -108,3 +108,23 @@ input.border-bottom-input{
 p.whitecolor, h1.whitecolor, h2.whitecolor, h3.whitecolor h4.whitecolor h5.whitecolor{
 	color: #fff;
 }
+div.item b.arrow-left {
+    border-right: solid 13px #fff;
+    border-top: thin 13px transparent;
+    border-bottom: solid 13px transparent;
+    position: absolute;
+    color: #fff;
+    left: 58px;
+    z-index: 1;
+    top: 16px;
+}
+div.item b.arrow-right {
+    border-left: solid 13px #ccff90;
+    border-top: thin 13px transparent;
+    border-bottom: solid 13px transparent;
+    position: absolute;
+    color: #ccff90;
+    right: 12px;
+    z-index: 1;
+    top: 16px;
+}
