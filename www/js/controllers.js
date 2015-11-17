@@ -1,7 +1,7 @@
 /* global angular, document, window */
 'use strict';
 
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ng-mfb'])
 
 .controller('logCtrl', function($scope, $ionicModal, $ionicPopover, $timeout,ionicMaterialMotion,ionicMaterialInk){
     $timeout(function() {
@@ -303,7 +303,7 @@ angular.module('starter.controllers', [])
                 $scope.hideLoader();
                 $("#fdaftar")[0].reset();
                 // $scope.p_login();
-                // window.location = "#/profile";
+                 //window.location = "#/profile";
             }).error(function() {
                 $scope.showAlert({
                     title: "Error",
