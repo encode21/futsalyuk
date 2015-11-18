@@ -35,7 +35,7 @@ angular.module('starter.controllers', [])
         // Execute action
     });
 })
-.controller('loginCtrl', function($scope, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+.controller('loginCtrl', function($scope,$ionicPopover, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -50,7 +50,8 @@ angular.module('starter.controllers', [])
     }, 700);
     ionicMaterialInk.displayEffect();
 
-    /*Processes*/
+    var cb = $("#coba"),ld = $("#loadernya");
+    ld.hide();
     $scope.showAlertError = function(msg){
         $ionicPopup.alert({
           title: msg.title,
@@ -74,7 +75,6 @@ angular.module('starter.controllers', [])
         });
         cb.addClass('ion-checkmark');
     }
-
     $scope.flogin = {};
     $scope.p_login = function() {
         if (!$scope.flogin.username) {
@@ -95,17 +95,20 @@ angular.module('starter.controllers', [])
                 
                 // $scope.hideLoader();
                 // var dt = $.parseJSON(data);
+                $scope.hideLoader();
                 console.log(data);
                 if (data.msg=='error_auth') {
                     $scope.showAlertError({
                         title: "Error",
                         message: "Silahkan cek kembali username dan password Anda :)"
                     });
+                    $scope.hideLoader();
                 }else{
                     $scope.showAlertError({
                         title: "Sukses",
                         message: "Berhasil Login"
                     });
+                    $scope.hideLoader();
                     if (data.statusUser=='penyewa') {
                         var id= $("#idUser").val(data.id);
                         // console.log(id);
@@ -121,9 +124,9 @@ angular.module('starter.controllers', [])
                     title: "Error",
                     message: "Gagal Login"
                 });
-                // $scope.hideLoader();
+                $scope.hideLoader();
             });
-            // $scope.loader();
+            $scope.loader();
         }
     }
     /*Processes*/
@@ -330,7 +333,6 @@ angular.module('starter.controllers', [])
         }
     } 
 })
-
 .controller('sewaCtrl', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
         ionicMaterialMotion.slideUp({
