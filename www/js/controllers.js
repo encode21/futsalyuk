@@ -662,7 +662,14 @@ angular.module('starter.controllers', [])
     $scope.getTeamId();
 })
 .controller('pesanTeam', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
-
+    $scope.CallNumber = function(){ 
+        var number = '08994453710' ; 
+        window.plugins.CallNumber.callNumber(function(){
+     //success logic goes here
+    }, function(){
+     alert("nomor telponnya ga ada");
+    }, number) 
+    };
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
             startVelocity: 3000
