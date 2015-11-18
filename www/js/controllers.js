@@ -35,7 +35,7 @@ angular.module('starter.controllers', [])
         // Execute action
     });
 })
-.controller('loginCtrl', function($scope, $stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+.controller('loginCtrl', function($scope, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -58,6 +58,21 @@ angular.module('starter.controllers', [])
           okText: 'Ok',
           okType: 'button-assertive'
       });
+    }
+
+    $scope.loader = function() {
+        ld.show();
+        $ionicLoading.show({
+            template:'<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+        });
+        cb.removeClass('ion-checkmark');
+    };
+    $scope.hideLoader = function() {
+        ld.hide();
+        $ionicLoading.hide({
+            template:'<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+        });
+        cb.addClass('ion-checkmark');
     }
 
     $scope.flogin = {};
@@ -315,6 +330,7 @@ angular.module('starter.controllers', [])
         }
     } 
 })
+
 .controller('sewaCtrl', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
         ionicMaterialMotion.slideUp({
