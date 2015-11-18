@@ -109,22 +109,22 @@ p.whitecolor, h1.whitecolor, h2.whitecolor, h3.whitecolor h4.whitecolor h5.white
 	color: #fff;
 }
 div.item b.arrow-left {
-    border-right: solid 13px #fff;
-    border-top: thin 13px transparent;
-    border-bottom: solid 13px transparent;
+    border-right: solid 10px #fff;
+    border-top: thin 10px transparent;
+    border-bottom: solid 10px transparent;
     position: absolute;
     color: #fff;
-    left: 58px;
+    left: 62px;
     z-index: 1;
     top: 16px;
 }
 div.item b.arrow-right {
-    border-left: solid 13px #ccff90;
-    border-top: thin 13px transparent;
-    border-bottom: solid 13px transparent;
+    border-left: solid 10px #ccff90;
+    border-top: thin 10px transparent;
+    border-bottom: solid 10px transparent;
     position: absolute;
     color: #ccff90;
-    right: 12px;
+    right: 16px;
     z-index: 1;
     top: 16px;
 }

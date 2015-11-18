@@ -1,11 +1,16 @@
 angular.module('starter.service', [])
 
 .factory('beforeAuth', function($http) {
+<<<<<<< HEAD
     var baseUrl = 'http://198.50.174.69/futsalservice/index.php/main/';
      // var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
     // var baseUrl = 'http://192.168.1.105/ionic_projects/futsalservice/index.php/main/';
     // var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
     // var baseUrl = 'http://futsalservice.6te.net/index.php/main/';
+=======
+    // var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
+    var baseUrl = 'http://198.50.174.69/futsalservice/index.php/main/';
+>>>>>>> 91fc0255ed686908277cc30dc487683395bbbf9e
     return {
         getUserId: function (uId){
             return $http.get(baseUrl+'datauser?id_user='+uId); 
