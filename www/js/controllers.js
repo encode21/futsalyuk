@@ -675,6 +675,7 @@ angular.module('starter.controllers', [])
             startVelocity: 3000
         });
     }, 700);
+
     ionicMaterialInk.displayEffect();
     /*popover*/
     // .fromTemplate() method
