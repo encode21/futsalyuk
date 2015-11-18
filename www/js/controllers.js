@@ -662,6 +662,7 @@ angular.module('starter.controllers', [])
     $scope.getTeamId();
 })
 .controller('pesanTeam', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+    var id = $("#idUser").val();
     $scope.CallNumber = function(){ 
         var number = '08994453710' ; 
         window.plugins.CallNumber.callNumber(function(){
@@ -675,7 +676,12 @@ angular.module('starter.controllers', [])
             startVelocity: 3000
         });
     }, 700);
-
+    $scope.datanya = function() {
+        beforeAuth.ambil_listuserchat(id).success(function(listuserchat) {
+            $scope.listuserchat = listuserchat;
+        });
+    };
+    $scope.datanya();
     ionicMaterialInk.displayEffect();
     /*popover*/
     // .fromTemplate() method
