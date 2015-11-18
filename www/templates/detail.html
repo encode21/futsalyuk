@@ -15,21 +15,8 @@
 		</span>
 	</div>
 </ion-header-bar>
-<ion-header-bar class="bar-stable bar bar-header disable-user-behavior" style="margin-top:44px;" align-title="center">
-	<div class="tabs tabs-light static" style="">
-		<a class="tab-item ink hvr-underline-from-center">
-            Home
-        </a>
-        <a class="tab-item ink hvr-underline-from-center">
-            Sewa
-        </a>
-        <a class="tab-item ink hvr-underline-from-center">
-            Pesan
-        </a>
-	</div>
-</ion-header-bar>
 <ion-content scroll="true" class="scroll-content ionic-scroll  has-header" style="transform: translate3d(0px, 0px, 0px) scale(1);">
-<div class="hero slide-up" style="background-image: url('img/bglagi.jpg');margin-top:50px;">
+<div class="hero slide-up" style="background-image: url('img/bglagi.jpg');margin-top:10px;">
 	<div class="padding">
 		<div class="card" style="background:rgba(5,5,5,.8);">
 		  	<div class="item-body" ng-repeat="dt in dtlapdetail">
@@ -72,5 +59,15 @@
 		</div>
 	</div>
 </div>	
+
 </ion-content>
+<div>
+<nav mfb-menu position="br" effect="slidein-spring"
+     active-icon="ion-chevron-up" resting-icon="ion-chevron-down"
+     toggling-method="click">
+  <a mfb-button mfb-button-close ui-sref="profie" icon="ion-email" label="Message"></a>
+  <a mfb-button mfb-button-close ui-sref="" icon="ion-ios-calendar-outline" label="Jadwal"></a>
+  <button mfb-button icon="ion-android-open" label="Sewa Lapangan"></button>
+</nav>
+  </div>
 </ion-view>

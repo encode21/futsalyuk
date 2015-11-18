@@ -82,7 +82,7 @@ angular.module('starter.controllers', [])
     // };
     // $scope.ck();
 })
-.controller('loginCtrl', function($scope, $stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+.controller('loginCtrl', function($scope,$ionicPopover, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -97,7 +97,8 @@ angular.module('starter.controllers', [])
     }, 700);
     ionicMaterialInk.displayEffect();
 
-    /*Processes*/
+    var cb = $("#coba"),ld = $("#loadernya");
+    ld.hide();
     $scope.showAlertError = function(msg){
         $ionicPopup.alert({
           title: msg.title,
@@ -107,6 +108,20 @@ angular.module('starter.controllers', [])
       });
     }
 
+    $scope.loader = function() {
+        ld.show();
+        $ionicLoading.show({
+            template:'<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+        });
+        cb.removeClass('ion-checkmark');
+    };
+    $scope.hideLoader = function() {
+        ld.hide();
+        $ionicLoading.hide({
+            template:'<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+        });
+        cb.addClass('ion-checkmark');
+    }
     $scope.flogin = {};
     $scope.p_login = function() {
         if (!$scope.flogin.username) {
@@ -127,17 +142,20 @@ angular.module('starter.controllers', [])
                 
                 // $scope.hideLoader();
                 // var dt = $.parseJSON(data);
+                $scope.hideLoader();
                 console.log(data);
                 if (data.msg=='error_auth') {
                     $scope.showAlertError({
                         title: "Error",
                         message: "Silahkan cek kembali username dan password Anda :)"
                     });
+                    $scope.hideLoader();
                 }else{
                     $scope.showAlertError({
                         title: "Sukses",
                         message: "Berhasil Login"
                     });
+                    $scope.hideLoader();
                     if (data.statusUser=='penyewa') {
                         var id= $("#idUser").val(data.id);
                         // console.log(id);
@@ -153,9 +171,9 @@ angular.module('starter.controllers', [])
                     title: "Error",
                     message: "Gagal Login"
                 });
-                // $scope.hideLoader();
+                $scope.hideLoader();
             });
-            // $scope.loader();
+            $scope.loader();
         }
     }
     /*Processes*/
@@ -711,6 +729,42 @@ angular.module('starter.controllers', [])
     $scope.$on('$destroy', function() {
         $scope.popover.remove();
     });
+    ionicMaterialInk.displayEffect();
+})
+.controller('list_pesan', function($scope, $ionicPopover,$stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
+    /*popover*/
+    // .fromTemplate() method
+    var template =  '<ion-popover-view style="height:165px;">' +
+                    '   <ion-content>' +
+                    '       <div class="list">' +
+                    '            <a ui-sref="profile" class="item item-icon-left">' +
+                    '                <i class="icon ion-android-person"></i> Profile' +
+                    '           </a>' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '           </a>' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
+                    '            </a>' +
+                    '        </div>' +
+                    '   </ion-content>' +
+                    '</ion-popover-view>';
 
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
     ionicMaterialInk.displayEffect();
 })
