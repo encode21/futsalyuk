@@ -2,8 +2,24 @@
 'use strict';
 
 angular.module('starter.controllers', [])
-
-.controller('logCtrl', function($scope, $ionicModal, $ionicPopover, $timeout,ionicMaterialMotion,ionicMaterialInk){
+.run(function($ionicPlatform, $ionicPopup) {
+        $ionicPlatform.ready(function() {
+            if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.confirm({
+                        title: "Oops!",
+                        content: "Masalah koneksi ke server. Untuk melanjutkan silahkan hidupkan Mobile Network atau hubungkan ke Wi-fi"
+                    })
+                    .then(function(result) {
+                        if(!result) {
+                            ionic.Platform.exitApp();
+                        }
+                    });
+                }
+            }
+        });
+    })
+.controller('logCtrl', function($scope, $ionicModal, $ionicPopover,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
@@ -34,6 +50,37 @@ angular.module('starter.controllers', [])
       $scope.$on('modal.removed', function() {
         // Execute action
     });
+    // $scope.showPopupError = function(msg){
+    //     $ionicPopup.alert({
+    //       title: "Error",
+    //       template: "Pastikan smartphone Anda terkoneksi ke Internet.",
+    //       // okText: 'Ok',
+    //       // okType: 'button-assertive',
+    //       buttons : [{
+    //             text : 'Coba lagi',
+    //             type : 'button-assertive',
+    //             onTap: function(e) {
+    //                 e.preventDefault();
+    //                 // alert('kampret');
+    //                 $ionicPopup.close;
+    //                 window.location.reload(); 
+    //             }
+    //         }
+    //       ]
+    //   });
+    // };
+    // $scope.ck = function() {
+    //     beforeAuth.cekKoneksi().success(function(cn) {
+    //         var connected = cn.conn;
+    //         if (connected=='berhasil') {
+    //             // $scope.showPopupError();
+    //         }else if (connected='tidak') {
+    //             $scope.showPopupError();
+    //         }
+    //         // console.log(cn.conn);
+    //     });
+    // };
+    // $scope.ck();
 })
 .controller('loginCtrl', function($scope,$ionicPopover, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
@@ -633,7 +680,14 @@ angular.module('starter.controllers', [])
     $scope.getTeamId();
 })
 .controller('pesanTeam', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
-
+    $scope.CallNumber = function(){ 
+        var number = '08994453710' ; 
+        window.plugins.CallNumber.callNumber(function(){
+     //success logic goes here
+    }, function(){
+     alert("nomor telponnya ga ada");
+    }, number) 
+    };
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
             startVelocity: 3000

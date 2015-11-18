@@ -4,6 +4,9 @@ angular.module('starter.service', [])
     // var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
     var baseUrl = 'http://198.50.174.69/futsalservice/index.php/main/';
     return {
+        cekKoneksi: function () {
+            return $http.get(baseUrl+'cek_koneksi');
+        },
         getUserId: function (uId){
             return $http.get(baseUrl+'datauser?id_user='+uId); 
         },
