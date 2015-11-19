@@ -130,6 +130,7 @@ div.item b.arrow-right {
 }
 div.item div.costom-card-penerima{
 	margin-left:-25px;
+	border-bottom-left-radius: 20px; 
 	margin-top:0;
 	border-bottom:solid 2px #33cd5f;
 }	
@@ -137,4 +138,5 @@ div.item div.costom-card-pengirim{
 	background-color:#ccff90;
 	margin-top:0;
 	border-bottom:solid 2px #fff;
+	border-bottom-right-radius: 20px; 
 }
