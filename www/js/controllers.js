@@ -151,11 +151,6 @@ angular.module('starter.controllers', [])
                     });
                     $scope.hideLoader();
                 }else{
-                    $scope.showAlertError({
-                        title: "Sukses",
-                        message: "Berhasil Login"
-                    });
-                    $scope.hideLoader();
                     if (data.statusUser=='penyewa') {
                         var id= $("#idUser").val(data.id);
                         // console.log(id);
@@ -164,6 +159,7 @@ angular.module('starter.controllers', [])
                         var id= $("#idUser").val(data.id);
                         window.location='#/home';
                     }
+                    $scope.hideLoader();
                 }
                 $("#formlogin")[0].reset();
             }).error(function() {
@@ -212,8 +208,8 @@ angular.module('starter.controllers', [])
         });
     }, 700);
     ionicMaterialInk.displayEffect();
+    
     /*popover*/
-
     // .fromTemplate() method
     var template =  '<ion-popover-view style="height:165px;">' +
                     '   <ion-content>' +
@@ -680,13 +676,23 @@ angular.module('starter.controllers', [])
     $scope.getTeamId();
 })
 .controller('pesanTeam', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+    var id = $("#idUser").val();
+    $scope.getTeamId = function() {
+        beforeAuth.getTeamId(id).success(function(dataTeam) {
+            $scope.dataTeam = dataTeam;
+        });
+        beforeAuth.getUserId(id).success(function(dataUser) {
+            $scope.dataUser = dataUser;
+        });
+    };
+    $scope.getTeamId();
     $scope.CallNumber = function(){ 
         var number = '08994453710' ; 
         window.plugins.CallNumber.callNumber(function(){
-     //success logic goes here
-    }, function(){
-     alert("nomor telponnya ga ada");
-    }, number) 
+        //success logic goes here
+        }, function(){
+         alert("nomor telponnya ga ada");
+        }, number) 
     };
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
@@ -723,6 +729,17 @@ angular.module('starter.controllers', [])
         $scope.popover.remove();
     });
     ionicMaterialInk.displayEffect();
+
+    var id = $("#idUser").val();
+    $scope.getTeamId = function() {
+        beforeAuth.getTeamId(id).success(function(dataTeam) {
+            $scope.dataTeam = dataTeam;
+        });
+        beforeAuth.getUserId(id).success(function(dataUser) {
+            $scope.dataUser = dataUser;
+        });
+    };
+    $scope.getTeamId();    
 })
 .controller('list_pesan', function($scope, $ionicPopover,$stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {

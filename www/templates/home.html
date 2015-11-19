@@ -15,18 +15,21 @@
 		</span>
 	</div>
 </ion-header-bar>
-<ion-header-bar class="bar-stable bar bar-header disable-user-behavior" style="margin-top:44px;" align-title="center">
-	<div class="tabs tabs-light static" style="">
-		<a ui-sref="home" class="tab-item ink hvr-underline-from-center">
-            Home
-        </a>
-        <a ui-sref="sewa" class="tab-item ink hvr-underline-from-center">
-            Sewa
-        </a>
-        <a ui-sref="list_pesan" class="tab-item ink hvr-underline-from-center">
-            Pesan
-        </a>
-	</div>
+<ion-header-bar style="margin-top:44px;" align-title="center">
+	<ion-tabs class="tabs-color-active-stabled">
+		<!-- Dashboard Tab -->
+		<ion-tab title="Home" icon-off="Home" icon-on="Home" href="#/home">
+			<ion-nav-view name="tab-home"></ion-nav-view>
+		</ion-tab>
+		<!-- Chats Tab -->
+		<ion-tab title="Sewa" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/sewa">
+			<ion-nav-view name="tab-sewa"></ion-nav-view>
+		</ion-tab>
+		<!-- Account Tab -->
+		<ion-tab title="Pesan" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/list_pesan">
+			<ion-nav-view name="tab-list-pesan"></ion-nav-view>
+		</ion-tab>
+	</ion-tabs>
 </ion-header-bar>
 <ion-content class="scroll-content ionic-scroll has-header padding expanded">
 	<br>
