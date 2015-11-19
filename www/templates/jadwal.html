@@ -1,0 +1,37 @@
+<ion-view data-title="Futsal Yuk!" style="background:#f1f1f1;">
+<ion-header-bar class="bar-dark bar bar-header disable-user-behavior" align-title="center">
+    <div class="buttons buttons-left header-item">
+        <span class="left-buttons">
+            <a href="javascript:history.go(-1);">
+                <button class="button button-icon button-clear ion-arrow-left-c" menu-toggle="left"></button>
+            </a>
+            <span class="border-right"></span>
+        </span>
+    </div>
+    <div class="title title-left header-item" ng-repeat="dt in dtlapdetail">Jadwal Lapangan {{ dt.nama_penyedia }}</div>
+    <div class="buttons buttons-right header-item">
+        <span class="right-buttons">
+            <button class="custom-right-button button button-icon button-clear ion-android-more-vertical" ng-click="showPopup()"></button>
+        </span>
+    </div>
+</ion-header-bar>
+<ion-content scroll="true" class="scroll-content ionic-scroll  has-header" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+ <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon " ng-class="isGroupShown(group) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+            &nbsp;
+            Lapangan {{group.name}}
+          </ion-item>
+          <ion-item class="item-accordion" style="background-color:#828282;"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)">
+            {{item}}
+          </ion-item>
+        </div>
+      </ion-list>
+
+</ion-content>
+</ion-view>

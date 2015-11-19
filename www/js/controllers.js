@@ -35,7 +35,7 @@ angular.module('starter.controllers', ['ng-mfb'])
         // Execute action
     });
 })
-.controller('loginCtrl', function($scope, $stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+.controller('loginCtrl', function($scope, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -58,6 +58,21 @@ angular.module('starter.controllers', ['ng-mfb'])
           okText: 'Ok',
           okType: 'button-assertive'
       });
+    }
+
+    $scope.loader = function() {
+        ld.show();
+        $ionicLoading.show({
+            template:'<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+        });
+        cb.removeClass('ion-checkmark');
+    };
+    $scope.hideLoader = function() {
+        ld.hide();
+        $ionicLoading.hide({
+            template:'<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+        });
+        cb.addClass('ion-checkmark');
     }
 
     $scope.flogin = {};
@@ -315,6 +330,7 @@ angular.module('starter.controllers', ['ng-mfb'])
         }
     } 
 })
+
 .controller('sewaCtrl', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -652,4 +668,137 @@ angular.module('starter.controllers', ['ng-mfb'])
     });
 
     ionicMaterialInk.displayEffect();
+})
+.controller('jadwal',function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
+    /*popover*/
+    // .fromTemplate() method
+    var template =  '<ion-popover-view style="height:165px;">' +
+                    '   <ion-content>' +
+                    '       <div class="list">' +
+                    '            <a ui-sref="profile" class="item item-icon-left">' +
+                    '                <i class="icon ion-android-person"></i> Profile' +
+                    '           </a>' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '           </a>' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
+                    '            </a>' +
+                    '        </div>' +
+                    '   </ion-content>' +
+                    '</ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+
+    ionicMaterialInk.displayEffect();
+
+    var idnya = $stateParams.dtId_penyedia;
+    console.log(idnya);
+    // Get detail lapangan
+    $scope.tempatfutsalid = function() {
+        beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
+            $scope.dtlapdetail = dtlapdetail;
+        });
+        };
+    $scope.tempatfutsalid();
+
+    $scope.groups = [];
+  for (var i=1; i<10; i++) {
+    $scope.groups[i] = {
+      name: i,
+      items: [''],
+      show: false
+    };
+    for (var j=0; j<3; j++) {
+      $scope.groups[i].items.push(i + ' VS ' + j);
+    }
+  }
+  
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleGroup = function(group) {
+    group.show = !group.show;
+  };
+  $scope.isGroupShown = function(group) {
+    return group.show;
+  };
+})
+.controller('booking',function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+    ionicMaterialInk.displayEffect();
+    /*popover*/
+    // .fromTemplate() method
+    var template =  '<ion-popover-view style="height:165px;">' +
+                    '   <ion-content>' +
+                    '       <div class="list">' +
+                    '            <a ui-sref="profile" class="item item-icon-left">' +
+                    '                <i class="icon ion-android-person"></i> Profile' +
+                    '           </a>' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '           </a>' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
+                    '            </a>' +
+                    '        </div>' +
+                    '   </ion-content>' +
+                    '</ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+
+    ionicMaterialInk.displayEffect();
+
+    var idnya = $stateParams.dtId_penyedia;
+    console.log(idnya);
+    // Get detail lapangan
+    $scope.tempatfutsalid = function() {
+        beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
+            $scope.dtlapdetail = dtlapdetail;
+        });
+        };
+    $scope.tempatfutsalid();
+    
+    $scope.show_section = {};
+  
+    $scope.patient = {
+    allergies: [{label: 'Bogor Team VS Depok Team'}, {label: 'Onedek VS Tb'}]
+  
+  };
+  
+    $scope.section_click = function(section, $event) {
+        $scope.show_section[section] = !$scope.show_section[section];
+        $scope.$broadcast('scroll.resize');
+    };
 })

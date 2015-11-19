@@ -68,6 +68,16 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     templateUrl: 'templates/pesan_team.html',
     controller: 'pesanTeam'
   })
+  .state('jadwal',{
+    url:'/jadwal',
+    templateUrl:'templates/jadwal.html',
+    controller:'jadwal'
+  })
+  .state('booking',{
+    url:'/booking/:dtId_penyedia',
+    templateUrl:'templates/booking.html',
+    controller:'booking'
+  })
   .state('list_pesan',{
     url: '/list_pesan',
     templateUrl: 'templates/list-pesan.html',

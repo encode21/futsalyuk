@@ -128,3 +128,26 @@ div.item b.arrow-right {
     z-index: 1;
     top: 16px;
 }
+div.item div.costom-card-penerima{
+	margin-left:-25px;
+	margin-top:0;
+	border-bottom:solid 2px #33cd5f;
+}	
+div.item div.costom-card-pengirim{
+	background-color:#ccff90;
+	margin-top:0;
+	border-bottom:solid 2px #fff;
+}
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
