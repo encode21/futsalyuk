@@ -34,25 +34,12 @@
 <ion-content class="scroll-content ionic-scroll expanded">
 <div class="content has-header" style="margin-top:-25px;">
 	<div class="list animate-fade-slide-in-right">
-		<a ui-sref="pesan" class="item item-avatar item-icon-right in in done" style="border-bottom:solid 1px #ddd;">
-			<img src="img/icon.jpg">
-			<h2 style="margin-left:-25px;">NK-Corporation</h2>
-			<p style="margin-left:-25px;">This is a basic Card which contains an item that has wrapping text.</p>
-			<span class="item-note" style="margin-right:-40px;margin-top:-42px;">10:35</span>
+		<a ng-repeat="luser in listuserchat" href="#/pesan/{{luser.id_user}}" class="item item-avatar item-icon-right in in done" style="border-bottom:solid 1px #ddd;">
+			<img src="img/{{ luser.ava_team }}">
+			<h2 style="margin-left:-25px;">{{ luser.nama_team }}</h2>
+			<p style="margin-left:-25px;">{{ luser.msg }}</p>
+			<span class="item-note" style="margin-right:-40px;margin-top:-42px;">{{ luser.waktu }}</span>
 			<span class="badge badge-balanced" style="margin-top:25px;margin-right:-18px;">3</span>
-		</a>
-		<a ui-sref="pesan" class="item item-avatar item-icon-right in in done" style="border-bottom:solid 1px #ddd;">
-			<img src="img/daenerys.jpg">
-			<h2 style="margin-left:-25px;">Kokogu Squad</h2>
-			<p style="margin-left:-25px;">This is a basic Card which contains an item that has wrapping text.</p>
-			<span class="item-note" style="margin-right:-40px;margin-top:-42px;">10:35</span>
-		</a>
-		<a ui-sref="pesan" class="item item-avatar item-icon-right in in done" style="border-bottom:solid 1px #ddd;">
-			<img src="img/man.png">
-			<h2 style="margin-left:-25px;">Sewvis Fams</h2>
-			<p style="margin-left:-25px;">This is a basic Card which contains an item that has wrapping text.</p>
-			<span class="item-note" style="margin-right:-40px;margin-top:-42px;">10:35</span>
-			<span class="badge badge-balanced" style="margin-top:25px;margin-right:-18px;">11</span>
 		</a>
 	</div>
 </div>            

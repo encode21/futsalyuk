@@ -9,11 +9,11 @@
 		</span>
 	</div>
 	<div class="title header-item title-left list" style="margin-left:-70px;">
-		<a class="item item-avatar" style="margin-top:-15px;">
-			<img src="img/icon.jpg">
+		<a class="item item-avatar" ng-repeat="dt in dtuid" style="margin-top:-15px;">
+			<img src="img/{{ dt.ava_team }}">
 			<div>
-			<h2 class="whitecolor" style="margin-left:-25px;">NK-Corporation</h2>
-			<p class="whitecolor" style="margin-top:-15px;margin-left:-25px;">" Rizki "</p>
+			<h2 class="whitecolor" style="margin-left:-25px;">{{ dt.nama_team }}</h2>
+			<p class="whitecolor" style="margin-top:-15px;margin-left:-25px;">" {{ dt.username }} "</p>
 			</div>
 		</a>
 	</div>
@@ -30,97 +30,17 @@
 <ion-scroll zooming="true" direction="y" style="height:100%;">
 <div class="col">
 	<div class="content list">
-		<div class="item item-avatar">
-			<img src="img/icon.jpg">
-			<div class="penerima">
-				<b class="arrow-left"></b>
-				<div class="card costom-card-penerima">
-					<div class="item item-text-wrap">
-						This is a basic Card whichs 
-						<span class="item-note">
-					    	10:35
-					    </span>
-					</div>
-				</div>
-			</div>
-
-			<div class="penerima">
-				<b class="arrow-left"></b>
-				<div class="card costom-card-penerima">
-					<div class="item item-text-wrap">
-						This is a basic Card which contains an item that has wrapping text. 
-						This is a basic Card which contains an item that has wrapping text. 
-						This is a basic Card which contains an item that has wrapping text. 
-						This is a basic Card which contains an item that has wrapping text. 
-						This is a basic Card which contains an item that has wrapping text. 
-						<span class="item-note">
-					    	10:35
-					    </span>
-					</div>
-				</div>
-			</div>
-
-			<div class="penerima">
-				<b class="arrow-left"></b>
-				<div class="card costom-card-penerima">
-					<div class="item item-text-wrap">
-						This is a basic Card whichs 
-						<span class="item-note">
-					    	10:35
-					    </span>
-					</div>
-				</div>
-			</div>
-
-			<div class="penerima">
-				<b class="arrow-left"></b>
-				<div class="card costom-card-penerima">
-					<div class="item item-text-wrap">
-						This is a basic Card whichs 
-						<span class="item-note">
-					    	10:35
-					    </span>
-					</div>
-				</div>
-			</div>
-		</div>	
-
-		<div class="item" style="margin-top:-20px;">
-			<b class="arrow-right"></b>
-			<div class="card costom-card-pengirim">
+		<div class="item item-avatar" ng-repeat="datachat in datachat">
+			<img class="{{ datachat.classHide }}" src="img/{{ datachat.ava_team }}">
+			<b class="{{ datachat.classHide }} arrow-left"></b>
+			<div class="card {{ datachat.classCard }}">
 				<div class="item item-text-wrap">
-					This is a basic Card whichs This is a basic Card whichs This is a basic Card whichs
+					{{ datachat.msg }} 
 					<span class="item-note">
-				    	10:35 <i style="color:#0390d0;" class="ion-checkmark"></i>
+				    	{{ datachat.waktu }}
 				    </span>
 				</div>
 			</div>
-
-			<b class="arrow-right"></b>
-			<div class="card costom-card-pengirim">
-				<div class="item item-text-wrap">
-					This is a basic Card whichs This is a basic Card whichs This is a basic Card whichs
-					<span class="item-note">
-				    	10:35 <i style="color:#0390d0;" class="ion-checkmark"></i>
-				    </span>
-				</div>
-			</div>
-		</div>
-
-		<div class="item item-avatar" style="margin-top:-20px;">
-			<img src="img/icon.jpg">
-			<!-- <p class="whitecolor" style="margin-left:-25px;">Sumarna Team</p> -->
-			<div class="penerima">
-				<b class="arrow-left"></b>
-				<div class="card costom-card-penerima">
-					<div class="item item-text-wrap">
-						This is a basic Card whichs 
-						<span class="item-note">
-					    	10:35
-					    </span>
-					</div>
-				</div>
-			</div>		
 		</div>
 	</div>
 </div>

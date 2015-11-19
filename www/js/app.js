@@ -73,7 +73,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
   })
 
   .state('pesan',{
-    url: '/pesan',
+    url: '/pesan/:dtId_user',
     templateUrl: 'templates/pesan_team.html',
     controller: 'pesanTeam'
   })

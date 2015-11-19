@@ -82,7 +82,7 @@ angular.module('starter.controllers', [])
     // };
     // $scope.ck();
 })
-.controller('loginCtrl', function($scope,$ionicPopover, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+.controller('loginCtrl', function($scope,$ionicPopover,$state, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -154,10 +154,11 @@ angular.module('starter.controllers', [])
                     if (data.statusUser=='penyewa') {
                         var id= $("#idUser").val(data.id);
                         // console.log(id);
-                        window.location='#/home';
+                        $state.go("home");
                     }else if (data.statusUser=='penyedia') {
                         var id= $("#idUser").val(data.id);
-                        window.location='#/home';
+                        // window.location='#/home';
+                        $state.go("penyedia");
                     }
                     $scope.hideLoader();
                 }
@@ -210,6 +211,39 @@ angular.module('starter.controllers', [])
     ionicMaterialInk.displayEffect();
     
     /*popover*/
+    var options = {
+         maximumImagesCount: 10,
+         width: 800,
+         height: 800,
+         quality: 80
+     };
+
+     $scope.ImagePicker=function() {
+       document.addEventListener("deviceready", function () {
+
+        var options = {
+          quality: 50,
+          destinationType: Camera.DestinationType.DATA_URL,
+          sourceType: Camera.PictureSourceType.CAMERA,
+          allowEdit: true,
+          encodingType: Camera.EncodingType.JPEG,
+          targetWidth: 100,
+          targetHeight: 100,
+          popoverOptions: CameraPopoverOptions,
+          saveToPhotoAlbum: false,
+          correctOrientation:true
+      };
+
+          $cordovaCamera.getPicture(options).then(function(imageData) {
+              var image = document.getElementById('myImage');
+              image.src = "data:image/jpeg;base64," + imageData;
+          }, function(err) {
+          // error
+      });
+
+      }, false);
+     }
+     
     // .fromTemplate() method
     var template =  '<ion-popover-view style="height:165px;">' +
                     '   <ion-content>' +
@@ -481,7 +515,7 @@ angular.module('starter.controllers', [])
     };
     
     var idnya = $stateParams.dtId_penyedia;
-    console.log(idnya);
+    // console.log(idnya);
     // Get detail lapangan
     $scope.tempatfutsalid = function() {
         beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
@@ -689,14 +723,20 @@ angular.module('starter.controllers', [])
             startVelocity: 3000
         });
     }, 700);
-    $scope.datanya = function() {
-        beforeAuth.ambil_listuserchat(id).success(function(listuserchat) {
-            $scope.listuserchat = listuserchat;
-        });
-    };
-    $scope.datanya();
     ionicMaterialInk.displayEffect();
     /*popover*/
+    var idnya = $stateParams.dtId_user;
+    var id = $("#idUser").val();
+    $scope.datapesan = function() {
+        beforeAuth.ambil_isichat(id,idnya).success(function(datachat) {
+            $scope.datachat = datachat;
+
+        });
+        beforeAuth.ambil_userid(idnya).success(function(dtuid) {
+            $scope.dtuid = dtuid;
+        })
+    };
+    $scope.datapesan();
     // .fromTemplate() method
     var template =  '<ion-popover-view style="height:165px;">' +
                     '   <ion-content>' +
@@ -738,13 +778,26 @@ angular.module('starter.controllers', [])
     $scope.getTeamId();    
 })
 .controller('list_pesan', function($scope, $ionicPopover,$stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
             startVelocity: 3000
         });
     }, 700);
+
+    var id = $("#idUser").val();
+    $scope.datanya = function() {
+        beforeAuth.ambil_listuserchat(id).success(function(listuserchat) {
+            $scope.listuserchat = listuserchat;
+            // console.log(listuserchat);
+        });
+    };
+    $scope.datanya();
+
+
     ionicMaterialInk.displayEffect();
     /*popover*/
+
     // .fromTemplate() method
     var template =  '<ion-popover-view style="height:165px;">' +
                     '   <ion-content>' +
