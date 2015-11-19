@@ -23,51 +23,67 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     templateUrl: 'templates/menu.html',
     controller: 'logCtrl'
   })
+
   .state('login',{
     url: '/login',
     templateUrl: 'templates/login.html',
     controller: 'loginCtrl'
   })
-  .state('home',{
-    url: '/home',
-    templateUrl: 'templates/home.html',
-    controller: 'homeCtrl'
-  })
+
   .state('register',{
     url: '/register',
     templateUrl: 'templates/register.html',
     controller: 'registerCtrl'
   })
+
+  .state('home',{
+    url: '/home',
+    templateUrl: 'templates/home.html',
+    controller: 'homeCtrl'
+  })
+
   .state('sewa',{
     url: '/sewa',
     templateUrl: 'templates/sewa.html',
     controller: 'sewaCtrl'
   })
-  .state('detailLapangan',{
-    url: '/sewa/:dtId_penyedia',
-    templateUrl: 'templates/detail.html',
-    controller: 'detailLapangan'
+  
+  .state('list_pesan',{
+    url: '/list_pesan',
+    templateUrl: 'templates/list-pesan.html',
+    controller: 'list_pesan'
   })
+
   .state('setting',{
     url: '/setting',
     templateUrl: 'templates/setting.html',
     controller: 'setting'
   })
+
   .state('akun',{
     url: '/akun',
     templateUrl: 'templates/akun.html',
     controller: 'akunCtrl'
   })
+
   .state('profile',{
     url: '/profile',
     templateUrl: 'templates/profile.html',
     controller: 'profile'
   })
+
   .state('pesan',{
-    url: '/pesan',
+    url: '/pesan/:dtId_user',
     templateUrl: 'templates/pesan_team.html',
     controller: 'pesanTeam'
   })
+
+  .state('detailLapangan',{
+    url: '/sewa/:dtId_penyedia',
+    templateUrl: 'templates/detail.html',
+    controller: 'detailLapangan'
+  })
+    
   .state('jadwal',{
     url:'/jadwal',
     templateUrl:'templates/jadwal.html',
@@ -77,11 +93,6 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     url:'/booking/:dtId_penyedia',
     templateUrl:'templates/booking.html',
     controller:'booking'
-  })
-  .state('list_pesan',{
-    url: '/list_pesan',
-    templateUrl: 'templates/list-pesan.html',
-    controller: 'list_pesan'
   });
   $urlRouterProvider.otherwise("/");
 })

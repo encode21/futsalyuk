@@ -15,19 +15,6 @@
 		</span>
 	</div>
 </ion-header-bar>
-<ion-header-bar class="bar-stable bar bar-header disable-user-behavior" style="margin-top:44px;" align-title="center">
-	<div class="tabs tabs-light static" style="">
-		<a ui-sref="home" class="tab-item ink hvr-underline-from-center">
-            Home
-        </a>
-        <a ui-sref="sewa" class="tab-item ink hvr-underline-from-center">
-            Sewa
-        </a>
-        <a ui-sref="list_pesan" class="tab-item ink hvr-underline-from-center">
-            Pesan
-        </a>
-	</div>
-</ion-header-bar>
 <ion-content class="scroll-content ionic-scroll has-header padding expanded">
 	<br>
 		<!-- <button class="button button-block button-positive" ng-click="editModal()">Upload Sekarang</button> -->
@@ -55,7 +42,6 @@
 		</div>
 	</div>
 	<h1></h1>
-
 <script id="edit.html" type="text/ng-template">
         <div class="modal">
             <ion-header-bar class="bar-stable">
@@ -83,4 +69,11 @@
         </div>
 </script>
 </ion-content>
+<div class="float-button">
+  <span class="height-fix">
+    <a ng-click="openImage()" class="content">
+      <i class="ion-plus-round"> </i>
+    </a>
+  </span>
+</div>
 </ion-view>

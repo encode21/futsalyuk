@@ -2,8 +2,24 @@
 'use strict';
 
 angular.module('starter.controllers', ['ng-mfb'])
-
-.controller('logCtrl', function($scope, $ionicModal, $ionicPopover, $timeout,ionicMaterialMotion,ionicMaterialInk){
+.run(function($ionicPlatform, $ionicPopup) {
+        $ionicPlatform.ready(function() {
+            if(window.Connection) {
+                if(navigator.connection.type == Connection.NONE) {
+                    $ionicPopup.confirm({
+                        title: "Oops!",
+                        content: "Masalah koneksi ke server. Untuk melanjutkan silahkan hidupkan Mobile Network atau hubungkan ke Wi-fi"
+                    })
+                    .then(function(result) {
+                        if(!result) {
+                            ionic.Platform.exitApp();
+                        }
+                    });
+                }
+            }
+        });
+    })
+.controller('logCtrl', function($scope, $ionicModal, $ionicPopover,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
@@ -34,8 +50,39 @@ angular.module('starter.controllers', ['ng-mfb'])
       $scope.$on('modal.removed', function() {
         // Execute action
     });
+    // $scope.showPopupError = function(msg){
+    //     $ionicPopup.alert({
+    //       title: "Error",
+    //       template: "Pastikan smartphone Anda terkoneksi ke Internet.",
+    //       // okText: 'Ok',
+    //       // okType: 'button-assertive',
+    //       buttons : [{
+    //             text : 'Coba lagi',
+    //             type : 'button-assertive',
+    //             onTap: function(e) {
+    //                 e.preventDefault();
+    //                 // alert('kampret');
+    //                 $ionicPopup.close;
+    //                 window.location.reload(); 
+    //             }
+    //         }
+    //       ]
+    //   });
+    // };
+    // $scope.ck = function() {
+    //     beforeAuth.cekKoneksi().success(function(cn) {
+    //         var connected = cn.conn;
+    //         if (connected=='berhasil') {
+    //             // $scope.showPopupError();
+    //         }else if (connected='tidak') {
+    //             $scope.showPopupError();
+    //         }
+    //         // console.log(cn.conn);
+    //     });
+    // };
+    // $scope.ck();
 })
-.controller('loginCtrl', function($scope, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+.controller('loginCtrl', function($scope,$ionicPopover,$state, $stateParams,$ionicPopup,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     // Set Motion
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -50,7 +97,8 @@ angular.module('starter.controllers', ['ng-mfb'])
     }, 700);
     ionicMaterialInk.displayEffect();
 
-    /*Processes*/
+    var cb = $("#coba"),ld = $("#loadernya");
+    ld.hide();
     $scope.showAlertError = function(msg){
         $ionicPopup.alert({
           title: msg.title,
@@ -74,7 +122,6 @@ angular.module('starter.controllers', ['ng-mfb'])
         });
         cb.addClass('ion-checkmark');
     }
-
     $scope.flogin = {};
     $scope.p_login = function() {
         if (!$scope.flogin.username) {
@@ -95,25 +142,25 @@ angular.module('starter.controllers', ['ng-mfb'])
                 
                 // $scope.hideLoader();
                 // var dt = $.parseJSON(data);
+                $scope.hideLoader();
                 console.log(data);
                 if (data.msg=='error_auth') {
                     $scope.showAlertError({
                         title: "Error",
                         message: "Silahkan cek kembali username dan password Anda :)"
                     });
+                    $scope.hideLoader();
                 }else{
-                    $scope.showAlertError({
-                        title: "Sukses",
-                        message: "Berhasil Login"
-                    });
                     if (data.statusUser=='penyewa') {
                         var id= $("#idUser").val(data.id);
                         // console.log(id);
-                        window.location='#/home';
+                        $state.go("home");
                     }else if (data.statusUser=='penyedia') {
                         var id= $("#idUser").val(data.id);
-                        window.location='#/home';
+                        // window.location='#/home';
+                        $state.go("penyedia");
                     }
+                    $scope.hideLoader();
                 }
                 $("#formlogin")[0].reset();
             }).error(function() {
@@ -121,9 +168,9 @@ angular.module('starter.controllers', ['ng-mfb'])
                     title: "Error",
                     message: "Gagal Login"
                 });
-                // $scope.hideLoader();
+                $scope.hideLoader();
             });
-            // $scope.loader();
+            $scope.loader();
         }
     }
     /*Processes*/
@@ -162,8 +209,41 @@ angular.module('starter.controllers', ['ng-mfb'])
         });
     }, 700);
     ionicMaterialInk.displayEffect();
+    
     /*popover*/
+    var options = {
+         maximumImagesCount: 10,
+         width: 800,
+         height: 800,
+         quality: 80
+     };
 
+     $scope.ImagePicker=function() {
+       document.addEventListener("deviceready", function () {
+
+        var options = {
+          quality: 50,
+          destinationType: Camera.DestinationType.DATA_URL,
+          sourceType: Camera.PictureSourceType.CAMERA,
+          allowEdit: true,
+          encodingType: Camera.EncodingType.JPEG,
+          targetWidth: 100,
+          targetHeight: 100,
+          popoverOptions: CameraPopoverOptions,
+          saveToPhotoAlbum: false,
+          correctOrientation:true
+      };
+
+          $cordovaCamera.getPicture(options).then(function(imageData) {
+              var image = document.getElementById('myImage');
+              image.src = "data:image/jpeg;base64," + imageData;
+          }, function(err) {
+          // error
+      });
+
+      }, false);
+     }
+     
     // .fromTemplate() method
     var template =  '<ion-popover-view style="height:165px;">' +
                     '   <ion-content>' +
@@ -318,7 +398,7 @@ angular.module('starter.controllers', ['ng-mfb'])
                 $scope.hideLoader();
                 $("#fdaftar")[0].reset();
                 // $scope.p_login();
-                 //window.location = "#/profile";
+                // window.location = "#/profile";
             }).error(function() {
                 $scope.showAlert({
                     title: "Error",
@@ -330,7 +410,6 @@ angular.module('starter.controllers', ['ng-mfb'])
         }
     } 
 })
-
 .controller('sewaCtrl', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -436,7 +515,7 @@ angular.module('starter.controllers', ['ng-mfb'])
     };
     
     var idnya = $stateParams.dtId_penyedia;
-    console.log(idnya);
+    // console.log(idnya);
     // Get detail lapangan
     $scope.tempatfutsalid = function() {
         beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
@@ -631,7 +710,14 @@ angular.module('starter.controllers', ['ng-mfb'])
     $scope.getTeamId();
 })
 .controller('pesanTeam', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
-
+    $scope.CallNumber = function(){ 
+        var number = '08994453710' ; 
+        window.plugins.CallNumber.callNumber(function(){
+        //success logic goes here
+        }, function(){
+         alert("nomor telponnya ga ada");
+        }, number) 
+    };
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
             startVelocity: 3000
@@ -639,6 +725,18 @@ angular.module('starter.controllers', ['ng-mfb'])
     }, 700);
     ionicMaterialInk.displayEffect();
     /*popover*/
+    var idnya = $stateParams.dtId_user;
+    var id = $("#idUser").val();
+    $scope.datapesan = function() {
+        beforeAuth.ambil_isichat(id,idnya).success(function(datachat) {
+            $scope.datachat = datachat;
+
+        });
+        beforeAuth.ambil_userid(idnya).success(function(dtuid) {
+            $scope.dtuid = dtuid;
+        })
+    };
+    $scope.datapesan();
     // .fromTemplate() method
     var template =  '<ion-popover-view style="height:165px;">' +
                     '   <ion-content>' +
@@ -666,7 +764,67 @@ angular.module('starter.controllers', ['ng-mfb'])
     $scope.$on('$destroy', function() {
         $scope.popover.remove();
     });
+    ionicMaterialInk.displayEffect();
 
+    var id = $("#idUser").val();
+    $scope.getTeamId = function() {
+        beforeAuth.getTeamId(id).success(function(dataTeam) {
+            $scope.dataTeam = dataTeam;
+        });
+        beforeAuth.getUserId(id).success(function(dataUser) {
+            $scope.dataUser = dataUser;
+        });
+    };
+    $scope.getTeamId();    
+})
+.controller('list_pesan', function($scope, $ionicPopover,$stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+
+    $timeout(function() {
+        ionicMaterialMotion.fadeSlideInRight({
+            startVelocity: 3000
+        });
+    }, 700);
+
+    var id = $("#idUser").val();
+    $scope.datanya = function() {
+        beforeAuth.ambil_listuserchat(id).success(function(listuserchat) {
+            $scope.listuserchat = listuserchat;
+            // console.log(listuserchat);
+        });
+    };
+    $scope.datanya();
+
+
+    ionicMaterialInk.displayEffect();
+    /*popover*/
+
+    // .fromTemplate() method
+    var template =  '<ion-popover-view style="height:165px;">' +
+                    '   <ion-content>' +
+                    '       <div class="list">' +
+                    '            <a ui-sref="profile" class="item item-icon-left">' +
+                    '                <i class="icon ion-android-person"></i> Profile' +
+                    '           </a>' +
+                    '           <a ui-sref="setting" class="item item-icon-left">' +
+                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
+                    '           </a>' +
+                    '           <a ui-sref="menu" class="item item-icon-left">' +
+                    '               <i class="icon ion-log-out"></i> Keluar' +
+                    '            </a>' +
+                    '        </div>' +
+                    '   </ion-content>' +
+                    '</ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
     ionicMaterialInk.displayEffect();
 })
 .controller('jadwal',function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {

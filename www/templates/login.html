@@ -2,14 +2,17 @@
 <ion-header-bar class="bar-dark bar bar-header disable-user-behavior" align-title="center">
 	<div class="buttons buttons-left header-item">
 		<span class="left-buttons">
-			<button ui-sref="menu" class="button button-icon button-clear ion-arrow-left-c" menu-toggle="left"></button>
+			<a href="javascript:history.go(-1);">
+				<button class="button button-icon button-clear ion-arrow-left-c" menu-toggle="left"></button>
+			</a>
 			<span class="border-right"></span>
 		</span>
 	</div>
 	<div class="title title-left header-item">Masuk</div>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
-			<button type="submit" class="custom-right-button button button-icon button-clear ion-checkmark" id="menu-popover" ng-click="popover.show($event)"></button>
+			<button type="submit" id="third" ng-click="p_login()" class="custom-right-button button button-icon ion-checkmark button-clear">
+			<img width="48px" id="loadernya" height="48px" src="img/light_blue_material_design_loading.gif" alt=""></button>
 		</span>
 	</div>
 </ion-header-bar>
@@ -18,7 +21,7 @@
 <div class="col responsive-sm center">
 	<div class="padding">
 		<center><img src="img/logocoba.png" style="height:17%;" alt=""></center>
-		<form id="formlogin" method="post">
+		<form ng-submit="p_login()" id="formlogin" method="post">
 	    <div class="list card stable-bg" style="background-color:#fff;">
             <div class="item item-body">
 				<!-- <label class="item item-input" style="border-bottom:solid 1px #ddd;">
@@ -29,16 +32,16 @@
 	        	</label> -->
 				<label class="item item-input item-floating-label">
 				    <span class="input-label greencolor">Nama Pengguna</span>
-				    <input ng-model="flogin.username" class="" type="text" placeholder="Nama pengguna">
+				    <input ng-model="flogin.username" id="first" data-dependency="second" class="" type="text" placeholder="Nama pengguna">
 				</label>
 				<label class="item item-input item-floating-label">
 				    <span class="input-label greencolor">Password</span>
-				    <input ng-model="flogin.password" class="" type="password" placeholder="Kata sandi">
+				    <input ng-model="flogin.password" id="second" data-dependency="third" class="" type="password" placeholder="Kata sandi">
 				</label>
            	</div>
             <div class="button-bar bar-light button-bar-login" style="border-top:solid 2px #ddd;">
 	    		<a class="button button-raised ink-dark custom">Lupa kata sandi?</a>
-			    <a type="submit" ng-click="p_login()" class="button button-raised ink-dark custom-font">Masuk</a>
+			    <a type="submit" id="third" ng-click="p_login()" class="button button-raised ink-dark custom-font">Masuk</a>
 		    </div>
         </div>
         </form>
