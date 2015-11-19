@@ -35,24 +35,39 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     templateUrl: 'templates/register.html',
     controller: 'registerCtrl'
   })
-
-  .state('home',{
-    url: '/home',
-    templateUrl: 'templates/home.html',
-    controller: 'homeCtrl'
+.state('tab',{
+    url: '/tab',
+    abstract: true,
+    templateUrl: 'templates/tab.html',
+    controller: 'tabCtrl'
   })
-
-  .state('sewa',{
-    url: '/sewa',
-    templateUrl: 'templates/sewa.html',
-    controller: 'sewaCtrl'
-  })
-  
-  .state('list_pesan',{
-    url: '/list_pesan',
-    templateUrl: 'templates/list-pesan.html',
-    controller: 'list_pesan'
-  })
+.state('tab.home', {
+      url: '/home',
+      views: {
+        'tab-home': {
+          templateUrl: 'templates/home.html',
+          controller: 'homeCtrl'
+        }
+      }
+    })
+.state('tab.sewa', {
+      url: '/sewa',
+      views: {
+        'tab-sewa': {
+          templateUrl: 'templates/sewa.html',
+          controller: 'sewaCtrl'
+        }
+      }
+    })
+  .state('tab.pesan', {
+      url: '/pesan',
+      views: {
+        'tab-pesan': {
+          templateUrl: 'templates/list-pesan.html',
+          controller: 'pesanCtrl'
+        }
+      }
+    })
 
   .state('setting',{
     url: '/setting',
@@ -93,6 +108,6 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     url:'/booking/:dtId_penyedia',
     templateUrl:'templates/booking.html',
     controller:'booking'
-  });
+  })
   $urlRouterProvider.otherwise("/");
 })

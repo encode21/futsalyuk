@@ -19,6 +19,8 @@ angular.module('starter.controllers', ['ng-mfb'])
             }
         });
     })
+.controller('tabCtrl', function($scope){
+})
 .controller('logCtrl', function($scope, $ionicModal, $ionicPopover,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -154,7 +156,7 @@ angular.module('starter.controllers', ['ng-mfb'])
                     if (data.statusUser=='penyewa') {
                         var id= $("#idUser").val(data.id);
                         // console.log(id);
-                        $state.go("home");
+                        $state.go("tab.home");
                     }else if (data.statusUser=='penyedia') {
                         var id= $("#idUser").val(data.id);
                         // window.location='#/home';
@@ -777,7 +779,7 @@ angular.module('starter.controllers', ['ng-mfb'])
     };
     $scope.getTeamId();    
 })
-.controller('list_pesan', function($scope, $ionicPopover,$stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+.controller('pesanCtrl', function($scope, $ionicPopover,$stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
 
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
