@@ -780,25 +780,21 @@ angular.module('starter.controllers', ['ng-mfb'])
 
     ionicMaterialInk.displayEffect();
 
-    var idnya = $stateParams.dtId_penyedia;
+   var idnya = $stateParams.dtId_penyedia;
     console.log(idnya);
     // Get detail lapangan
     $scope.tempatfutsalid = function() {
         beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
             $scope.dtlapdetail = dtlapdetail;
         });
-        };
-    $scope.tempatfutsalid();
+        beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
+            $scope.dtbookingpenyedia = dtbookingpenyedia;
+        });
+        beforeAuth.ambil_gallerylapanganLim(idnya).success(function(dtgallery) {
+            $scope.dtgallery = dtgallery;
+        });
     
-    $scope.show_section = {};
-  
-    $scope.patient = {
-    allergies: [{label: 'Bogor Team VS Depok Team'}, {label: 'Onedek VS Tb'}]
-  
-  };
-  
-    $scope.section_click = function(section, $event) {
-        $scope.show_section[section] = !$scope.show_section[section];
-        $scope.$broadcast('scroll.resize');
     };
+  
+    $scope.tempatfutsalid();
 })
