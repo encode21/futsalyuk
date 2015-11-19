@@ -1,8 +1,8 @@
 angular.module('starter.service', [])
 
 .factory('beforeAuth', function($http) {
-    var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
-    // var baseUrl = 'http://198.50.174.69/futsalservice/index.php/main/';
+    // var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
+    var baseUrl = 'http://198.50.174.69/futsalservice/index.php/main/';
 
     return {
         cekKoneksi: function () {
@@ -50,6 +50,12 @@ angular.module('starter.service', [])
         },
         ambil_listuserchat: function(id) {
             return $http.get(baseUrl+'listuser_chat?id='+id);
+        },        
+        ambil_isichat: function(id,idu) {
+            return $http.get(baseUrl+'isi_chat?id_peng='+id+'&id_pen='+idu);
         },
+        ambil_userid: function(id) {
+            return $http.get(baseUrl+'ambil_userid?iduser='+id);
+        }
     };
 });
