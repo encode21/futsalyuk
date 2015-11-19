@@ -46,6 +46,9 @@ angular.module('starter.service', [])
         },
         ambil_gallerylapanganLim: function(id) {
             return $http.get(baseUrl+'ambil_gallerylapanganLim?id_lap='+id);
-        }
+        },
+        ambil_listuserchat: function(id) {
+            return $http.get(baseUrl+'listuser_chat?id='+id);
+        },
     };
 });
