@@ -82,6 +82,17 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     url: '/sewa/:dtId_penyedia',
     templateUrl: 'templates/detail.html',
     controller: 'detailLapangan'
+  })
+    
+  .state('jadwal',{
+    url:'/jadwal',
+    templateUrl:'templates/jadwal.html',
+    controller:'jadwal'
+  })
+  .state('booking',{
+    url:'/booking/:dtId_penyedia',
+    templateUrl:'templates/booking.html',
+    controller:'booking'
   });
   $urlRouterProvider.otherwise("/");
 })
