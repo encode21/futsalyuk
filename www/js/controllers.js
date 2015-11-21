@@ -261,7 +261,7 @@ angular.module('starter.controllers', [])
         $scope.popover = popover;
     });
     $scope.$on('change', function() {
-        $scope.popover.remove();
+        $scope.popover.hide();
     });
 
       $scope.demo = 'android';
@@ -273,7 +273,7 @@ angular.module('starter.controllers', [])
       }
     $scope.getValue = function (status) {
         console.log('clicked on:' + status);
-        $scope.popover.remove();
+        $scope.popover.hide();
     }
 
     ionicMaterialInk.displayEffect();
@@ -436,7 +436,7 @@ angular.module('starter.controllers', [])
         $scope.popover = popover;
     });
     $scope.$on('change', function() {
-        $scope.popover.remove();
+        $scope.popover.hide();
     });
 
       $scope.demo = 'android';
@@ -448,7 +448,7 @@ angular.module('starter.controllers', [])
       }
     $scope.getValue = function (status) {
         console.log('clicked on:' + status);
-        $scope.popover.remove();
+        $scope.popover.hide();
     }
 
     // Get Lapangan
@@ -480,7 +480,7 @@ angular.module('starter.controllers', [])
         $scope.popover = popover;
     });
     $scope.$on('change', function() {
-        $scope.popover.remove();
+        $scope.popover.hide();
     });
 
       $scope.demo = 'android';
@@ -492,7 +492,7 @@ angular.module('starter.controllers', [])
       }
     $scope.getValue = function (status) {
         console.log('clicked on:' + status);
-        $scope.popover.remove();
+        $scope.popover.hide();
     }
     ionicMaterialInk.displayEffect(); 
     $scope.showPopup = function() {
@@ -548,7 +548,7 @@ angular.module('starter.controllers', [])
         $scope.popover = popover;
     });
     $scope.$on('change', function() {
-        $scope.popover.remove();
+        $scope.popover.hide();
     });
 
       $scope.demo = 'android';
@@ -560,7 +560,7 @@ angular.module('starter.controllers', [])
       }
     $scope.getValue = function (status) {
         console.log('clicked on:' + status);
-        $scope.popover.remove();
+        $scope.popover.hide();
     }
 })
 .controller('profile', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
@@ -597,7 +597,7 @@ angular.module('starter.controllers', [])
         $scope.popover = popover;
     });
     $scope.$on('change', function() {
-        $scope.popover.remove();
+        $scope.popover.hide();
     });
 
       $scope.demo = 'android';
@@ -609,7 +609,7 @@ angular.module('starter.controllers', [])
       }
     $scope.getValue = function (status) {
         console.log('clicked on:' + status);
-        $scope.popover.remove();
+        $scope.popover.hide();
     }
 
     ionicMaterialInk.displayEffect();
@@ -659,7 +659,7 @@ angular.module('starter.controllers', [])
         $scope.popover = popover;
     });
     $scope.$on('change', function() {
-        $scope.popover.remove();
+        $scope.popover.hide();
     });
 
       $scope.demo = 'android';
@@ -671,7 +671,7 @@ angular.module('starter.controllers', [])
       }
     $scope.getValue = function (status) {
         console.log('clicked on:' + status);
-        $scope.popover.remove();
+        $scope.popover.hide();
     }
 
     ionicMaterialInk.displayEffect();
@@ -722,7 +722,7 @@ angular.module('starter.controllers', [])
         $scope.popover = popover;
     });
     $scope.$on('change', function() {
-        $scope.popover.remove();
+        $scope.popover.hide();
     });
 
       $scope.demo = 'android';
@@ -734,7 +734,7 @@ angular.module('starter.controllers', [])
       }
     $scope.getValue = function (status) {
         console.log('clicked on:' + status);
-        $scope.popover.remove();
+        $scope.popover.hide();
     }
     ionicMaterialInk.displayEffect();
 })
@@ -766,7 +766,7 @@ angular.module('starter.controllers', [])
         $scope.popover = popover;
     });
     $scope.$on('change', function() {
-        $scope.popover.remove();
+        $scope.popover.hide();
     });
 
       $scope.demo = 'android';
@@ -778,11 +778,11 @@ angular.module('starter.controllers', [])
       }
     $scope.getValue = function (status) {
         console.log('clicked on:' + status);
-        $scope.popover.remove();
+        $scope.popover.hide();
     }
     //Cleanup the popover when we're done with it!
     $scope.$on('$destroy', function() {
-        $scope.popover.remove();
+        $scope.popover.hide();
     });
     ionicMaterialInk.displayEffect();
 })
