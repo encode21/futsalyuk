@@ -908,20 +908,22 @@ angular.module('starter.controllers', ['ng-mfb'])
     ionicMaterialInk.displayEffect();
 
    var idnya = $stateParams.dtId_penyedia;
-    console.log(idnya);
+    // console.log(idnya);
     // Get detail lapangan
     $scope.tempatfutsalid = function() {
         beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
             $scope.dtlapdetail = dtlapdetail;
         });
-        beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
-            $scope.dtbookingpenyedia = dtbookingpenyedia;
-        });
-        beforeAuth.ambil_gallerylapanganLim(idnya).success(function(dtgallery) {
+        // beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
+        //     $scope.dtbookingpenyedia = dtbookingpenyedia;
+        // });
+        beforeAuth.ambil_gallerylapangan(idnya).success(function(dtgallery) {
             $scope.dtgallery = dtgallery;
         });
-    
     };
-  
     $scope.tempatfutsalid();
+    $scope.alertGal=function(data) {
+        // body...
+        alert(data);
+    }
 })
