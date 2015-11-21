@@ -93,7 +93,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     controller: 'pesanTeam'
   })
 
-  .state('detailLapangan',{
+  .state('detail_lapangan',{
     url: '/sewa/:dtId_penyedia',
     templateUrl: 'templates/detail.html',
     controller: 'detailLapangan'
@@ -105,7 +105,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     controller:'jadwal'
   })
   .state('booking',{
-    url:'/booking/:dtId_penyedia',
+    url:'/detail_lapangan/booking/:dtsewId_penyedia',
     templateUrl:'templates/booking.html',
     controller:'booking'
   })

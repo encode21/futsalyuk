@@ -32,7 +32,7 @@
 	<div class="content list">
 		<div class="item item-avatar" ng-repeat="datachat in datachat">
 			<img class="{{ datachat.classHide }}" src="img/{{ datachat.ava_team }}">
-			<b class="{{ datachat.classHide }} arrow-left"></b>
+			<b class="{{ datachat.classIcon }}"></b>
 			<div class="card {{ datachat.classCard }}">
 				<div class="item item-text-wrap">
 					{{ datachat.msg }} 
@@ -46,7 +46,7 @@
 </div>
 </ion-scroll>
 </ion-content>
-<div class="bar bar-footer bar-light item-input-inset">
+<div class="bar bar-footer bar-light item-input-inset" ng-model='doc.description'>
 	<div class="buttons buttons-left header-item">
 		<span class="left-buttons">
 			<a>
@@ -55,7 +55,9 @@
 		</span>
 	</div>
 	<label class="item-input-wrapper">
-		<input type="text">
+		<textarea ng-model='doc.description' style="resize:none;overflow:hidden;" 
+   rows='{{doc.description.length/50 + 1}}' 
+   cols='50'></textarea>
 	</label>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
