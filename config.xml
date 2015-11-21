@@ -5,14 +5,14 @@
         Aplikasi untuk mempermudah dalam booking atau penyewaan lapangan secara online. Selain itu kamu bisa mengajak duel tim futsal lainnya untuk melakukan pertandingan persahabatan.&#xD;
     </description>
   <author email="nkdevs@gmail.com" href="http://nafaskuda.com/">&#xD;
-      Nafaskuda Team&#xD;
-    </author>
+    Nafaskuda Team&#xD;
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
-  <preference name="android-minSdkVersion" value="15"/>
+  <preference name="android-minSdkVersion" value="16"/>
   <preference name="orientation" value="portrait"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>

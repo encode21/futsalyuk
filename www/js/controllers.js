@@ -247,6 +247,7 @@ angular.module('starter.controllers', [])
       }, false);
      }
      
+     
     // .fromTemplate() method
     var template =  '<ion-popover-view style="height:165px;">' +
                     '   <ion-content>' +
@@ -524,14 +525,18 @@ angular.module('starter.controllers', [])
         beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
             $scope.dtlapdetail = dtlapdetail;
         });
-        beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
-            $scope.dtbookingpenyedia = dtbookingpenyedia;
-        });
-        beforeAuth.ambil_gallerylapanganLim(idnya).success(function(dtgallery) {
+        // beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
+        //     $scope.dtbookingpenyedia = dtbookingpenyedia;
+        // });
+        beforeAuth.ambil_gallerylapangan(idnya).success(function(dtgallery) {
             $scope.dtgallery = dtgallery;
         });
     };
     $scope.tempatfutsalid();
+    $scope.alertGal=function(data) {
+        // body...
+        alert(data);
+    }
 })
 .controller('setting', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
