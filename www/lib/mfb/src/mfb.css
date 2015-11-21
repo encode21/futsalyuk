@@ -119,7 +119,7 @@
     #BUTTONS | Base
 \*------------------------------------*/
 .mfb-component__button--main, .mfb-component__button--child {
-  background-color: #E40A5D;
+  background-color: #33cd5f;
   display: inline-block;
   position: relative;
   border: none;
@@ -155,10 +155,11 @@
 .mfb-component__icon, .mfb-component__main-icon--active,
 .mfb-component__main-icon--resting, .mfb-component__child-icon {
   position: absolute;
-  font-size: 18px;
+  font-size: 25px;
   text-align: center;
   line-height: 56px;
-  width: 100%; }
+  width: 100%; 
+  bottom: 18px; }
 
 .mfb-component__wrap {
   padding: 25px;

@@ -8,7 +8,7 @@
 			<span class="border-right"></span>
 		</span>
 	</div>
-	<div class="title title-left header-item" ng-repeat="dt in dtlapdetail">Sewa Lapangan {{ dt.nama_penyedia }}</div>
+	<div class="title title-left header-item" ng-repeat="dt in dtlapdetail">Sewa Lapangan</div>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
 			<button class="custom-right-button button button-icon button-clear ion-android-more-vertical" ng-click="showPopup()"></button>
@@ -19,7 +19,7 @@
 <div class="list">
     <a class="item item-thumbnail-left" href="#">
       <img src="img/futsal.jpg">
-      <h2>Lapangan Gadok</h2>
+      <h2 ng-repeat="dt in dtlapdetail">{{dt.nama_penyedia}}</h2>
       <p>Jl. Gadok, Cisalak</p>
     </a>
 </div>

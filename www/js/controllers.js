@@ -19,6 +19,8 @@ angular.module('starter.controllers', ['ng-mfb'])
             }
         });
     })
+.controller('tabCtrl', function($scope){
+})
 .controller('logCtrl', function($scope, $ionicModal, $ionicPopover,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     $timeout(function() {
         ionicMaterialMotion.slideUp({
@@ -154,7 +156,7 @@ angular.module('starter.controllers', ['ng-mfb'])
                     if (data.statusUser=='penyewa') {
                         var id= $("#idUser").val(data.id);
                         // console.log(id);
-                        $state.go("home");
+                        $state.go("tab.home");
                     }else if (data.statusUser=='penyedia') {
                         var id= $("#idUser").val(data.id);
                         // window.location='#/home';
@@ -777,7 +779,7 @@ angular.module('starter.controllers', ['ng-mfb'])
     };
     $scope.getTeamId();    
 })
-.controller('list_pesan', function($scope, $ionicPopover,$stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+.controller('pesanCtrl', function($scope, $ionicPopover,$stateParams,$ionicPopup, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
 
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
@@ -938,25 +940,21 @@ angular.module('starter.controllers', ['ng-mfb'])
 
     ionicMaterialInk.displayEffect();
 
-    var idnya = $stateParams.dtId_penyedia;
+   var idnya = $stateParams.dtId_penyedia;
     console.log(idnya);
     // Get detail lapangan
     $scope.tempatfutsalid = function() {
         beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
             $scope.dtlapdetail = dtlapdetail;
         });
-        };
-    $scope.tempatfutsalid();
+        beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
+            $scope.dtbookingpenyedia = dtbookingpenyedia;
+        });
+        beforeAuth.ambil_gallerylapanganLim(idnya).success(function(dtgallery) {
+            $scope.dtgallery = dtgallery;
+        });
     
-    $scope.show_section = {};
-  
-    $scope.patient = {
-    allergies: [{label: 'Bogor Team VS Depok Team'}, {label: 'Onedek VS Tb'}]
-  
-  };
-  
-    $scope.section_click = function(section, $event) {
-        $scope.show_section[section] = !$scope.show_section[section];
-        $scope.$broadcast('scroll.resize');
     };
+  
+    $scope.tempatfutsalid();
 })
