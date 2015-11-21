@@ -1,7 +1,7 @@
 /* global angular, document, window */
 'use strict';
 
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ng-mfb'])
 .run(function($ionicPlatform, $ionicPopup) {
         $ionicPlatform.ready(function() {
             if(window.Connection) {
