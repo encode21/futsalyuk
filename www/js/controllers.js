@@ -246,33 +246,34 @@ angular.module('starter.controllers', ['ng-mfb'])
       }, false);
      }
      
+     
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a ui-sref="profile" class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
+    // $ionicPopover.fromTemplateUrl('popovercoba.html', {
+    //     scope: $scope
+    // }).then(function(popover) {
+    //     $scope.popover = popover;
+    // });
 
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
+    $scope.$on('change', function() {
         $scope.popover.remove();
     });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.remove();
+    }
 
     ionicMaterialInk.displayEffect();
 
@@ -428,32 +429,26 @@ angular.module('starter.controllers', ['ng-mfb'])
     /*popover*/
 
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
+    $scope.$on('change', function() {
         $scope.popover.remove();
     });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.remove();
+    }
 
     // Get Lapangan
     $scope.tempatfutsal = function() {
@@ -478,32 +473,26 @@ angular.module('starter.controllers', ['ng-mfb'])
     /*popover*/
 
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+   $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
+    $scope.$on('change', function() {
         $scope.popover.remove();
     });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.remove();
+    }
     ionicMaterialInk.displayEffect(); 
     $scope.showPopup = function() {
         var alertPopup = $ionicPopup.alert({
@@ -523,14 +512,18 @@ angular.module('starter.controllers', ['ng-mfb'])
         beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
             $scope.dtlapdetail = dtlapdetail;
         });
-        beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
-            $scope.dtbookingpenyedia = dtbookingpenyedia;
-        });
-        beforeAuth.ambil_gallerylapanganLim(idnya).success(function(dtgallery) {
+        // beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
+        //     $scope.dtbookingpenyedia = dtbookingpenyedia;
+        // });
+        beforeAuth.ambil_gallerylapangan(idnya).success(function(dtgallery) {
             $scope.dtgallery = dtgallery;
         });
     };
     $scope.tempatfutsalid();
+    $scope.alertGal=function(data) {
+        // body...
+        alert(data);
+    }
 })
 .controller('setting', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
@@ -548,32 +541,26 @@ angular.module('starter.controllers', ['ng-mfb'])
     /*popover*/
 
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
+    $scope.$on('change', function() {
         $scope.popover.remove();
     });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.remove();
+    }
 })
 .controller('profile', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     var id = $("#idUser").val();
@@ -603,32 +590,26 @@ angular.module('starter.controllers', ['ng-mfb'])
     /*popover*/
 
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a ui-sref="profile" class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
+    $scope.$on('change', function() {
         $scope.popover.remove();
     });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.remove();
+    }
 
     ionicMaterialInk.displayEffect();
 
@@ -671,32 +652,26 @@ angular.module('starter.controllers', ['ng-mfb'])
     /*popover*/
 
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a ui-sref="profile" class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
+    $scope.$on('change', function() {
         $scope.popover.remove();
     });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.remove();
+    }
 
     ionicMaterialInk.displayEffect();
 
@@ -740,32 +715,26 @@ angular.module('starter.controllers', ['ng-mfb'])
     };
     $scope.datapesan();
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a ui-sref="profile" class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
+    $scope.$on('change', function() {
         $scope.popover.remove();
     });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.remove();
+    }
     ionicMaterialInk.displayEffect();
 
     var id = $("#idUser").val();
@@ -801,28 +770,26 @@ angular.module('starter.controllers', ['ng-mfb'])
     /*popover*/
 
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a ui-sref="profile" class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-    };
+    $scope.$on('change', function() {
+        $scope.popover.remove();
+    });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.remove();
+    }
     //Cleanup the popover when we're done with it!
     $scope.$on('$destroy', function() {
         $scope.popover.remove();

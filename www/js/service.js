@@ -3,6 +3,7 @@ angular.module('starter.service', [])
 .factory('beforeAuth', function($http) {
     // var baseUrl = 'http://localhost/ionic_projects/futsalservice/index.php/main/';
     var baseUrl = 'http://198.50.174.69/futsalservice/index.php/main/';
+
     return {
         cekKoneksi: function () {
             return $http.get(baseUrl+'cek_koneksi');
@@ -46,6 +47,9 @@ angular.module('starter.service', [])
         },
         ambil_gallerylapanganLim: function(id) {
             return $http.get(baseUrl+'ambil_gallerylapanganLim?id_lap='+id);
+        },        
+        ambil_gallerylapangan: function(id) {
+            return $http.get(baseUrl+'ambil_gallerylapangan?id_lap='+id);
         },
         ambil_listuserchat: function(id) {
             return $http.get(baseUrl+'listuser_chat?id='+id);
