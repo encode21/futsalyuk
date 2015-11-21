@@ -249,32 +249,26 @@ angular.module('starter.controllers', [])
      
      
     // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a ui-sref="profile" class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
+    // $ionicPopover.fromTemplateUrl('popovercoba.html', {
+    //     scope: $scope
+    // }).then(function(popover) {
+    //     $scope.popover = popover;
+    // });
 
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
-    });
-    $scope.closePopover = function() {
-        $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
-        $scope.popover.remove();
-    });
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+      }).then(function(popover) {
+        $scope.popover = popover;
+      });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+
 
     ionicMaterialInk.displayEffect();
 

@@ -34,6 +34,23 @@
 
 	<ion-nav-view animation="slide-left-right-ios7">
 		<input type="hidden" id="idUser">
+	<script id="templates/popovercoba.html" type="text/ng-template">
+<ion-popover-view style="height:165px;">
+   <ion-content>
+       <div class="list">
+            <a ui-sref="profile" class="item item-icon-left">
+                <i class="icon ion-android-person"></i> Profile
+           </a>
+           <a ui-sref="setting" class="item item-icon-left">
+               <i class="icon ion-android-settings"></i> Pengaturan
+           </a>
+           <a ui-sref="menu" class="item item-icon-left">
+               <i class="icon ion-log-out"></i> Keluar
+            </a>
+        </div>
+   </ion-content>
+</ion-popover-view>
+</script>
 	</ion-nav-view>
 </body>
 </html>
