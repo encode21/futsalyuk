@@ -108,6 +108,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.service','ioni
     url:'/detail_lapangan/booking/:dtsewId_penyedia',
     templateUrl:'templates/booking.html',
     controller:'booking'
-  })
+  });
+
   $urlRouterProvider.otherwise("/");
 })

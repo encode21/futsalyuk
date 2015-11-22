@@ -74,9 +74,9 @@
 <div>
 <nav mfb-menu position="br" effect="slidein-spring" active-icon="icon ion-chevron-up" resting-icon="icon ion-chevron-down" toggling-method="click">
   <a mfb-button mfb-button-close ui-sref="pesan" icon="ion-email" label="Message"></a>
-  <a mfb-button mfb-button-close href="#/jadwal" icon="ion-ios-calendar-outline" label="Jadwal"></a>
-  <button mfb-button mfb-button-close ng-repeat="dtsew in dtlapdetail"  href="#/detail_lapangan/{{dtsew.id_penyedia}}" icon="ion-android-open" label="Sewa Lapangan {{ dtsew.id_penyedia }}"></button>
-  <a mfb-button mfb-button-close icon="ion-android-open" label="Menu"></a>
+  <a mfb-button mfb-button-close ui-sref="jadwal" icon="ion-ios-calendar-outline" label="Jadwal"></a>
+  <a mfb-button mfb-button-close ng-repeat="dtsew in dtlapdetail"  ui-sref="booking" icon="ion-android-open" label="Sewa Lapangan {{ dtsew.id_penyedia }}"></a>
+  <!-- <a mfb-button mfb-button-close icon="ion-android-open" label="Sewa Lapangan"></a> -->
 </nav>
   </div>
 </ion-view>

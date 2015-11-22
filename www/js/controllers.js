@@ -1031,6 +1031,7 @@ angular.module('starter.controllers', ['ng-mfb'])
     ionicMaterialInk.displayEffect();
 
    var idnya = $stateParams.dtsewId_penyedia;
+   $("#idPenyediaK").val(idnya);
     console.log(idnya);
     // Get detail lapangan
     $scope.tempatfutsalid = function() {
