@@ -458,7 +458,7 @@ angular.module('starter.controllers', ['ng-mfb'])
     };
     $scope.tempatfutsal();
 })
-.controller('detailLapangan', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+.controller('detailLapangan', function($scope, $ionicPopover,$stateParams, $timeout,$ionicModal, $ionicSlideBoxDelegate,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
@@ -470,6 +470,72 @@ angular.module('starter.controllers', ['ng-mfb'])
             startVelocity: 3000
         });
     }, 700);
+
+    $scope.aImages = [{
+        'src' : 'http://ionicframework.com/img/ionic-logo-blog.png', 
+        'msg' : 'Swipe me to the left. Tap/click to close'
+    }, {
+        'src' : 'http://ionicframework.com/img/ionic_logo.svg', 
+        'msg' : ''
+    }, { 
+        'src' : 'http://ionicframework.com/img/homepage/phones-weather-demo@2x.png', 
+        'msg' : ''
+    }];
+  
+    $ionicModal.fromTemplateUrl('templates/image-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.$on('change', function() {
+        $scope.modal.hide();
+    });
+
+    $scope.openModal = function() {
+      $ionicSlideBoxDelegate.slide(0);
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hide', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+    $scope.$on('modal.shown', function() {
+      console.log('Modal is shown!');
+    });
+
+    // Call this functions if you need to manually control the slides
+    $scope.next = function() {
+      $ionicSlideBoxDelegate.next();
+    };
+  
+    $scope.previous = function() {
+      $ionicSlideBoxDelegate.previous();
+    };
+  
+    $scope.goToSlide = function(index) {
+      $scope.modal.show();
+      $ionicSlideBoxDelegate.slide(index);
+    }
+  
+    // Called each time the slide changes
+    $scope.slideChanged = function(index) {
+      $scope.slideIndex = index;
+    };
+
     /*popover*/
 
     // .fromTemplate() method
@@ -512,9 +578,9 @@ angular.module('starter.controllers', ['ng-mfb'])
         beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {
             $scope.dtlapdetail = dtlapdetail;
         });
-        // beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
-        //     $scope.dtbookingpenyedia = dtbookingpenyedia;
-        // });
+        beforeAuth.get_bookingpenyedia(idnya).success(function(dtbookingpenyedia) {
+            $scope.dtbookingpenyedia = dtbookingpenyedia;
+        });
         beforeAuth.ambil_gallerylapangan(idnya).success(function(dtgallery) {
             $scope.dtgallery = dtgallery;
         });
@@ -562,7 +628,7 @@ angular.module('starter.controllers', ['ng-mfb'])
         $scope.popover.hide();
     }
 })
-.controller('profile', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+.controller('profile', function($scope, $ionicPopover,$stateParams, $timeout,$ionicModal, $ionicSlideBoxDelegate,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     var id = $("#idUser").val();
     $scope.getTeamId = function() {
         beforeAuth.getTeamId(id).success(function(dataTeam) {
@@ -587,6 +653,72 @@ angular.module('starter.controllers', ['ng-mfb'])
         });
     }, 700);
     ionicMaterialInk.displayEffect();
+    
+    $scope.aImages = [{
+        'src' : 'http://ionicframework.com/img/ionic-logo-blog.png', 
+        'msg' : 'Swipe me to the left. Tap/click to close'
+        }, {
+        'src' : 'http://ionicframework.com/img/ionic_logo.svg', 
+        'msg' : ''
+      }, { 
+        'src' : 'http://ionicframework.com/img/homepage/phones-weather-demo@2x.png', 
+        'msg' : ''
+    }];
+  
+    $ionicModal.fromTemplateUrl('templates/image-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.$on('change', function() {
+        $scope.modal.hide();
+    });
+
+    $scope.openModal = function() {
+      $ionicSlideBoxDelegate.slide(0);
+      $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
+
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hide', function() {
+      // Execute action
+    });
+    // Execute action on remove modal
+    $scope.$on('modal.removed', function() {
+      // Execute action
+    });
+    $scope.$on('modal.shown', function() {
+      console.log('Modal is shown!');
+    });
+
+    // Call this functions if you need to manually control the slides
+    $scope.next = function() {
+      $ionicSlideBoxDelegate.next();
+    };
+  
+    $scope.previous = function() {
+      $ionicSlideBoxDelegate.previous();
+    };
+  
+    $scope.goToSlide = function(index) {
+      $scope.modal.show();
+      $ionicSlideBoxDelegate.slide(index);
+    }
+  
+    // Called each time the slide changes
+    $scope.slideChanged = function(index) {
+      $scope.slideIndex = index;
+    };
+
     /*popover*/
 
     // .fromTemplate() method
@@ -599,8 +731,8 @@ angular.module('starter.controllers', ['ng-mfb'])
         $scope.popover.hide();
     });
 
-      $scope.demo = 'android';
-      $scope.setPlatform = function(p) {
+    $scope.demo = 'android';
+    $scope.setPlatform = function(p) {
         document.body.classList.remove('platform-ios');
         document.body.classList.remove('platform-android');
         document.body.classList.add('platform-' + p);
@@ -694,6 +826,11 @@ angular.module('starter.controllers', ['ng-mfb'])
         }, function(){
          alert("nomor telponnya ga ada");
         }, number) 
+    };
+
+    $scope.updateEditor = function() {
+        var element = document.getElementById("inputArea");
+        element.style.height = element.scrollHeight + "px";
     };
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
@@ -805,33 +942,26 @@ angular.module('starter.controllers', ['ng-mfb'])
     }, 700);
     ionicMaterialInk.displayEffect();
     /*popover*/
-    // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a ui-sref="profile" class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
+    $scope.$on('change', function() {
         $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
-        $scope.popover.remove();
     });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.hide();
+    }
 
     ionicMaterialInk.displayEffect();
 
@@ -877,38 +1007,31 @@ angular.module('starter.controllers', ['ng-mfb'])
     }, 700);
     ionicMaterialInk.displayEffect();
     /*popover*/
-    // .fromTemplate() method
-    var template =  '<ion-popover-view style="height:165px;">' +
-                    '   <ion-content>' +
-                    '       <div class="list">' +
-                    '            <a ui-sref="profile" class="item item-icon-left">' +
-                    '                <i class="icon ion-android-person"></i> Profile' +
-                    '           </a>' +
-                    '           <a ui-sref="setting" class="item item-icon-left">' +
-                    '               <i class="icon ion-android-settings"></i> Pengaturan' +
-                    '           </a>' +
-                    '           <a ui-sref="menu" class="item item-icon-left">' +
-                    '               <i class="icon ion-log-out"></i> Keluar' +
-                    '            </a>' +
-                    '        </div>' +
-                    '   </ion-content>' +
-                    '</ion-popover-view>';
-
-    $scope.popover = $ionicPopover.fromTemplate(template, {
-        scope: $scope
+    $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
+        scope: $scope,
+    }).then(function(popover) {
+        $scope.popover = popover;
     });
-    $scope.closePopover = function() {
+    $scope.$on('change', function() {
         $scope.popover.hide();
-    };
-    //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function() {
-        $scope.popover.remove();
     });
+
+      $scope.demo = 'android';
+      $scope.setPlatform = function(p) {
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        document.body.classList.add('platform-' + p);
+        $scope.demo = p;
+      }
+    $scope.getValue = function (status) {
+        console.log('clicked on:' + status);
+        $scope.popover.hide();
+    }
 
     ionicMaterialInk.displayEffect();
 
-   var idnya = $stateParams.dtId_penyedia;
-    // console.log(idnya);
+   var idnya = $stateParams.dtsewId_penyedia;
+    console.log(idnya);
     // Get detail lapangan
     $scope.tempatfutsalid = function() {
         beforeAuth.get_tempatFutsalid(idnya).success(function(dtlapdetail) {

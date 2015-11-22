@@ -26,6 +26,8 @@
 			    	{{dt.alamat}}
 			    </p>
 			    <b class="badge badge-balanced" style="float:none;">IDR {{dt.harga}}/jam</b>
+			    <p><a class="item item-icon-right" href="#/detail_lapangan/booking/{{dt.id_penyedia}}">Kampret
+            </a></p>
 			</div>
 	  	</div>
 	</div>
@@ -35,14 +37,14 @@
 		<div class="" style="background:#fff;border-radius:4px;margin-bottom:10px;">
 			<h4 class="greencolor" style="padding:10px 16px 0;margin:0;"><i class="icon ion-images"></i> Gallery</h4>
 			<ul class="list" style="margin:0px !important;">
-			<li class="item">
-			<ion-scroll direction="x">
-				<!-- <div style="background:url(img/{{ dtgal.foto_lapangan }}) center center no-repeat;background-size:cover;width:64px;height:64px;"></div> -->
-				<img src="img/{{dtgal.foto_lapangan}}" ng-click="alertGal('{{dtgal.foto_lapangan}}')" style="width:64px;height:64px;padding:0 4px 0 0;" ng-repeat="dtgal in dtgallery">
-			</ion-scroll>
-			</li>
+				<li class="item">
+					<ion-scroll direction="x">
+						<!-- <div style="background:url(img/{{ dtgal.foto_lapangan }}) center center no-repeat;background-size:cover;width:64px;height:64px;"></div> -->
+						<img ng-click="openModal()" src="img/{{dtgal.foto_lapangan}}" ng-click="alertGal('{{dtgal.foto_lapangan}}')" style="width:64px;height:64px;padding:0 4px 0 0;" ng-repeat="dtgal in dtgallery">
+					</ion-scroll>
+				</li>
 			</ul>
-				<center><p style="padding-bottom:8px !important;" class=""><a class="item-note" style="float:none;" href="">See all photos <i class="icon ion-chevron-right"></i></a></p></center>
+			<center><p style="padding-bottom:8px !important;" class=""><a class="item-note" style="float:none;">See all photos <i class="icon ion-chevron-right"></i></a></p></center>
 				<!-- <button style="margin:0;" ng-click="moreAva()" class="button button-full ink button-balanced">Selengkapnya</button> -->
 		</div>
 		<p>&nbsp;</p>
@@ -54,6 +56,17 @@
                 <p>{{ dtbook.tgl_booking }}, Pukul {{ dtbook.jam_booking }}</p>
             </a>
 		</div>
+
+		<script id="templates/image-modal.html" type="text/ng-template">
+        	<div class="modal image-modal transparent" ng-click="closeModal()">
+	        	<ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
+	        		<ion-slide ng-repeat="oImage in aImages">
+	        			<img ng-src="{{oImage.src}}" class="fullscreen-image" />
+	        			<p class="info">{{oImage.msg}}</p>
+			    	</ion-slide>
+			    </ion-slide-box>
+			</div>
+		</script>
 	</div>
 </div>	
 
@@ -61,9 +74,9 @@
 <div>
 <nav mfb-menu position="br" effect="slidein-spring" active-icon="icon ion-chevron-up" resting-icon="icon ion-chevron-down" toggling-method="click">
   <a mfb-button mfb-button-close ui-sref="pesan" icon="ion-email" label="Message"></a>
-  <a mfb-button mfb-button-close ui-sref="jadwal" icon="ion-ios-calendar-outline" label="Jadwal"></a>
-  <a mfb-button mfb-button-close ng-repeat="dt in dtlapdetail" ui-sref="booking" icon="ion-android-open" label="Sewa Lapangan"><a>
-  <a mfb-button mfb-button-close ui-sref="booking" icon="ion-android-open" label="Sewa Lapangan"></a>
+  <a mfb-button mfb-button-close href="#/jadwal" icon="ion-ios-calendar-outline" label="Jadwal"></a>
+  <button mfb-button mfb-button-close ng-repeat="dtsew in dtlapdetail"  href="#/detail_lapangan/{{dtsew.id_penyedia}}" icon="ion-android-open" label="Sewa Lapangan {{ dtsew.id_penyedia }}"></button>
+  <a mfb-button mfb-button-close icon="ion-android-open" label="Menu"></a>
 </nav>
   </div>
 </ion-view>

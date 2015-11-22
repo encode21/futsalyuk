@@ -36,26 +36,33 @@
 	</div>
 	<div scroll="true" class="content">
 	<h4 class="content padding double-padding-x">Riwayat Bermain</h4>
-        <div class="list animate-blinds">
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/jon-snow.jpg">
-                <h2>Sinthya Futsal</h2>
-                <p>Da illest illegitimate</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/sansa.jpg">
-                <h2>Gadok Futsal</h2>
-                <p>&amp; Joffrey <strike>sitting</strike> sat in a tree</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </a>
-            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
-                <img src="img/tyrion.jpg">
-                <h2>Libero</h2>
-                <p>B.A.M.F. imp</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </a>
+        <div class="card">
+            <div class="item item-divider">
+                Fullscreen images + Slide Box
+            </div>
+            <div class="item item-text-wrap">
+                <div class="button-bar">
+                    <a class="button" ng-click="openModal()">Show images from start</a>
+                </div>
+            </div>
+            <div class="item item-text-wrap">
+                <div class="button-bar">
+                    <a class="button" ng-click="goToSlide(1)">Show second imagen</a>
+                    <a class="button" ng-click="goToSlide(2)">Show third imagen</a>
+                </div>
+            </div>
         </div>
+
+        <script id="templates/image-modal.html" type="text/ng-template">
+        	<div class="modal image-modal transparent" ng-click="closeModal()">
+	        	<ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
+	        		<ion-slide ng-repeat="oImage in aImages">
+	        			<img ng-src="{{oImage.src}}" class="fullscreen-image" />
+	        			<p class="info">{{oImage.msg}}</p>
+			    	</ion-slide>
+			    </ion-slide-box>
+			</div>
+		</script>
 	</div>
 </ion-content>
 </ion-view>
