@@ -140,6 +140,14 @@ div.item div.costom-card-pengirim{
 	border-bottom:solid 2px #fff;
 	border-radius: 20px 0 20px 20px; 
 }
+div.hero div.content button.btn-call{
+	margin-top:-95px;
+	margin-right:60px;
+}
+div.hero div.content button.btn-chat{
+	margin-top:-95px;
+	margin-left:60px;
+}	
 .list .item.item-accordion {
   line-height: 38px;
   padding-top: 0;

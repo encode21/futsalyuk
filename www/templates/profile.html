@@ -16,53 +16,33 @@
 	</div>
 </ion-header-bar>
 <ion-content scroll="false">
-	<div class="hero slide-up" style="background-image: url('img/bglagi.jpg');">
-		<div class="content item-icon-top">
-			<div class="avatar" style="background-image: url('img/{{dataTeam.ava_team}}');"></div>
-			<h3><a class="light">{{dataTeam.nama_team}}</a></h3>
-			<h4>{{dataUser.username}}</h4>
+	<div style="background-color:#fff;">
+		<div class="hero" style="background-image: url('img/wa.png');height:150px;">
+			<div class="content item-icon-top" style="margin-bottom:-95px;">
+				<button class="button btn-call button-balanced button-fab">
+	                    <i class="icon ion-android-call"></i>
+				</button>
+				<div class="avatar" style="background-image: url('img/{{dataTeam.ava_team}}');"></div>
+				<button class="button btn-chat button-balanced button-fab">
+	                    <i class="icon ion-chatbubbles"></i>
+				</button>
+				<h4><a class="dark">{{dataTeam.nama_team}}</a></h4>
+			</div>
+		</div>
+		<div class="tabs tabs-stable static" style="margin-top:100px;border-top:none;">
+			<a class="tab-item">
+				Home
+			</a>
+			<a class="tab-item" ui-sref="sewa">
+				Sewa
+			</a>
+			<a class="tab-item">
+				Gallery
+			</a>
 		</div>
 	</div>
-	<div class="tabs tabs-stable static">
-		<a class="tab-item">
-			Home
-		</a>
-		<a class="tab-item" ui-sref="sewa">
-			Sewa
-		</a>
-		<a class="tab-item">
-			Pesan
-		</a>
-	</div>
 	<div scroll="true" class="content">
-	<h4 class="content padding double-padding-x">Riwayat Bermain</h4>
-        <div class="card">
-            <div class="item item-divider">
-                Fullscreen images + Slide Box
-            </div>
-            <div class="item item-text-wrap">
-                <div class="button-bar">
-                    <a class="button" ng-click="openModal()">Show images from start</a>
-                </div>
-            </div>
-            <div class="item item-text-wrap">
-                <div class="button-bar">
-                    <a class="button" ng-click="goToSlide(1)">Show second imagen</a>
-                    <a class="button" ng-click="goToSlide(2)">Show third imagen</a>
-                </div>
-            </div>
-        </div>
-
-        <script id="templates/image-modal.html" type="text/ng-template">
-        	<div class="modal image-modal transparent" ng-click="closeModal()">
-	        	<ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
-	        		<ion-slide ng-repeat="oImage in aImages">
-	        			<img ng-src="{{oImage.src}}" class="fullscreen-image" />
-	        			<p class="info">{{oImage.msg}}</p>
-			    	</ion-slide>
-			    </ion-slide-box>
-			</div>
-		</script>
+		<h4 class="content padding double-padding-x">Riwayat Bermain</h4>
 	</div>
 </ion-content>
 </ion-view>
