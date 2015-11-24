@@ -848,7 +848,7 @@ angular.module('starter.controllers', ['ng-mfb'])
     };
     $scope.getTeamId();
 })
-.controller('pesanTeam', function($scope, $ionicPopover,$ionicPopup,$stateParams,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+.controller('pesanTeam', function($scope,$ionicScrollDelegate, $ionicPopover,$ionicPopup,$stateParams,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $scope.CallNumber = function(){ 
         var number = '08994453710' ; 
         window.plugins.CallNumber.callNumber(function(){
@@ -857,7 +857,6 @@ angular.module('starter.controllers', ['ng-mfb'])
          alert("nomor telponnya ga ada");
         }, number) 
     };
-
     $scope.updateEditor = function() {
         var element = document.getElementById("inputArea");
         element.style.height = element.scrollHeight + "px";
@@ -882,6 +881,7 @@ angular.module('starter.controllers', ['ng-mfb'])
         beforeAuth.ambil_isichat(id,idnya).success(function(datachat) {
             $scope.datachat = datachat;
             $ionicLoading.hide();
+            $ionicScrollDelegate.scrollBottom();
         });
         beforeAuth.ambil_userid(idnya).success(function(dtuid) {
             $scope.dtuid = dtuid;
@@ -896,6 +896,7 @@ angular.module('starter.controllers', ['ng-mfb'])
             $ionicLoading.hide();
         });
     }
+    // $timeout($scope.datapesan(), 1000);
     $scope.showAlertError = function(msg){
         $ionicPopup.alert({
           title: msg.title,
@@ -911,7 +912,47 @@ angular.module('starter.controllers', ['ng-mfb'])
                 title: "Information",
                 message: "Harap isi chat"
             });
-        }else{}
+        }else{
+            beforeAuth.kirimchat(id,idnya,{msg: $scope.chat.msgnya}).success(function(data){
+                
+                $ionicLoading.hide();
+                // console.log(data.msg);
+                if (data.msg=='pengirim_kosong') {
+                    $scope.showAlertError({
+                        title: "Error",
+                        message: "Data Pengirim Kosong"
+                    });
+                    $ionicLoading.hide();
+                }else if (data.msg=='penerima_kosong') {
+                    $scope.showAlertError({
+                        title: "Error",
+                        message: "Data Penerima Kosong"
+                    });
+                    $ionicLoading.hide();
+                }else if (data.msg=='data_kosong') {
+                    $scope.showAlertError({
+                        title: "Error",
+                        message: "Data Chat Kosong"
+                    });
+                    $ionicLoading.hide();
+                }else{
+                    $scope.clickMe();
+                    // $ionicLoading.show();
+                }
+                $ionicScrollDelegate.scrollBottom();
+                $("#valChat").val('');
+            }).error(function() {
+                $scope.showAlertError({
+                    title: "Error",
+                    message: "Gagal Mengirim chat"
+                });
+                $("#formchat")[0].reset();
+                $ionicLoading.hide();
+            });
+            $ionicLoading.show();
+            $ionicScrollDelegate.scrollBottom();
+        }
+        $ionicScrollDelegate.scrollBottom();
     };
     // .fromTemplate() method
     $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
