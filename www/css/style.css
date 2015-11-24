@@ -72,7 +72,7 @@ a{
 	height:50%;
 	margin-top:11px;
 }
-div.buttons-right span.right-buttons button.custom-right-button{
+div.bar-header div.buttons-right span.right-buttons button.custom-right-button{
 	color:#fff;
 	background-color:#33cd5f;
 	border-radius:0;

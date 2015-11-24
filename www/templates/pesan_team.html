@@ -53,21 +53,23 @@
 	<div class="buttons buttons-left header-item">
 		<span class="left-buttons">
 			<a>
-				<button style="color:#444;" class="button button-icon button-clear ion-plus-round" menu-toggle="left"></button>
+				<button style="color:#444;border:none;" class="button button-icon button-clear ion-plus-round" menu-toggle="left"></button>
 			</a>
 		</span>
 	</div>
 	<form method="post">
-	<label class="item-input-wrapper">
-		<textarea ng-model='doc.description' ng-model="chat.msgnya" style="resize:none;overflow:hidden;" 
-   rows='{{doc.description.length/10 + 1}}' 
-   cols='40'></textarea>
-	</label>
-	<div class="buttons buttons-right header-item">
-		<span class="right-buttons">
-			<button type="submit" ng-click="kirimpesan()" class="custom-right-button button button-icon button-clear icon ion-android-send"></button>
-		</span>
-	</div>
+		<div class="list">
+			<div class="item item-input-inset">
+				<label class="item-input-wrapper">
+		      		<input type="text" placeholder="Email">
+		    	</label>
+				<div class="buttons buttons-right header-item" style="float:right;">
+					<span class="right-buttons">
+						<button type="submit" ng-click="kirimpesan()" class="custom-right-button button button-icon button-clear icon ion-android-send"></button>
+					</span>
+				</div>
+			</div>	
+		</div>
 	</form>
 </div>
 </ion-view>
