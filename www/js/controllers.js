@@ -848,7 +848,7 @@ angular.module('starter.controllers', ['ng-mfb'])
     };
     $scope.getTeamId();
 })
-.controller('pesanTeam', function($scope, $ionicPopover,$stateParams,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+.controller('pesanTeam', function($scope, $ionicPopover,$ionicPopup,$stateParams,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $scope.CallNumber = function(){ 
         var number = '08994453710' ; 
         window.plugins.CallNumber.callNumber(function(){
@@ -895,7 +895,24 @@ angular.module('starter.controllers', ['ng-mfb'])
             $scope.datachat = datachat;
             $ionicLoading.hide();
         });
-      }
+    }
+    $scope.showAlertError = function(msg){
+        $ionicPopup.alert({
+          title: msg.title,
+          template: msg.message,
+          okText: 'Ok',
+          okType: 'button-assertive'
+      });
+    }
+    $scope.chat = {};
+    $scope.kirimpesan = function() {
+        if (!$scope.chat.msgnya) {
+            $scope.showAlertError({
+                title: "Information",
+                message: "Harap isi chat"
+            });
+        }else{}
+    };
     // .fromTemplate() method
     $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
         scope: $scope,
