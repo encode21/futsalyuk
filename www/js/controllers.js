@@ -193,6 +193,8 @@ angular.module('starter.controllers', ['ng-mfb'])
             $ionicLoading.hide();
         });
     };
+    $scope.getTeamId();
+    
     $scope.showData = function() {
         beforeAuth.getTimeline().success(function(dttl) {
             $scope.dttl = dttl;
@@ -306,16 +308,6 @@ angular.module('starter.controllers', ['ng-mfb'])
 
     ionicMaterialInk.displayEffect();
 
-    var id = $("#idUser").val();
-    $scope.getTeamId = function() {
-        beforeAuth.getTeamId(id).success(function(dataTeam) {
-            $scope.dataTeam = dataTeam;
-        });
-        beforeAuth.getUserId(id).success(function(dataUser) {
-            $scope.dataUser = dataUser;
-        });
-    };
-    $scope.getTeamId();
     
     $ionicModal.fromTemplateUrl('edit.html', function(modal){
         $scope.taskModal = modal;
@@ -851,12 +843,12 @@ angular.module('starter.controllers', ['ng-mfb'])
             $scope.dataTeam = dataTeam;
         });
         beforeAuth.getUserId(id).success(function(dataUser) {
-            $scope.dataUser = dataUser;
+            $ionicLoading.hide();
         });
     };
     $scope.getTeamId();
 })
-.controller('pesanTeam', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+.controller('pesanTeam', function($scope, $ionicPopover,$stateParams,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $scope.CallNumber = function(){ 
         var number = '08994453710' ; 
         window.plugins.CallNumber.callNumber(function(){
@@ -870,6 +862,13 @@ angular.module('starter.controllers', ['ng-mfb'])
         var element = document.getElementById("inputArea");
         element.style.height = element.scrollHeight + "px";
     };
+    $scope.loadingIndicator = $ionicLoading.show({
+        content: 'Loading Data',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 800,
+        showDelay: 0
+    });
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
             startVelocity: 3000
@@ -882,13 +881,21 @@ angular.module('starter.controllers', ['ng-mfb'])
     $scope.datapesan = function() {
         beforeAuth.ambil_isichat(id,idnya).success(function(datachat) {
             $scope.datachat = datachat;
-
+            $ionicLoading.hide();
         });
         beforeAuth.ambil_userid(idnya).success(function(dtuid) {
             $scope.dtuid = dtuid;
-        })
+            $ionicLoading.hide();
+        });
     };
     $scope.datapesan();
+    $scope.clickMe = function() {
+        $ionicLoading.show();
+        beforeAuth.ambil_isichat(id,idnya).success(function(datachat) {
+            $scope.datachat = datachat;
+            $ionicLoading.hide();
+        });
+      }
     // .fromTemplate() method
     $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
         scope: $scope,
