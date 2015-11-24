@@ -177,20 +177,51 @@ angular.module('starter.controllers', ['ng-mfb'])
     }
     /*Processes*/
 })
-.controller('homeCtrl', function($scope, $stateParams,$ionicPopover,$ionicModal, $location,$timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
+.controller('homeCtrl', function($scope, $stateParams,$ionicPopover,$ionicModal,$ionicLoading, $location,$timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth){
     var id = $("#idUser").val();
     $scope.getTeamId = function() {
         beforeAuth.getTeamId(id).success(function(dataTeam) {
             $scope.dataTeam = dataTeam;
+            // $ionicLoading.hide();
         });
         beforeAuth.getUserId(id).success(function(dataUser) {
             $scope.dataUser = dataUser;
+            // $ionicLoading.hide();
         });
         beforeAuth.getTimeline().success(function(dttl) {
             $scope.dttl = dttl;
+            $ionicLoading.hide();
         });
     };
     $scope.getTeamId();
+    
+    $scope.showData = function() {
+        beforeAuth.getTimeline().success(function(dttl) {
+            $scope.dttl = dttl;
+            $ionicLoading.hide();
+        }).finally(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+    };
+    $scope.showData();
+    // $scope.doRefresh = function() {
+    
+    // console.log('Refreshing!');
+    //     $timeout( function() {
+    //       //simulate async response
+
+    //       //Stop the ion-refresher from spinning
+    //       $scope.$broadcast('scroll.refreshComplete');
+        
+    //     }, 1000);
+    // }
+    $scope.loadingIndicator = $ionicLoading.show({
+        content: 'Loading Data',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 800,
+        showDelay: 0
+    });
     var navIcons = document.getElementsByClassName('ion-navicon');
     for (var i = 0; i < navIcons.length; i++) {
         navIcons[i].addEventListener('click', function() {
@@ -277,16 +308,6 @@ angular.module('starter.controllers', ['ng-mfb'])
 
     ionicMaterialInk.displayEffect();
 
-    var id = $("#idUser").val();
-    $scope.getTeamId = function() {
-        beforeAuth.getTeamId(id).success(function(dataTeam) {
-            $scope.dataTeam = dataTeam;
-        });
-        beforeAuth.getUserId(id).success(function(dataUser) {
-            $scope.dataUser = dataUser;
-        });
-    };
-    $scope.getTeamId();
     
     $ionicModal.fromTemplateUrl('edit.html', function(modal){
         $scope.taskModal = modal;
@@ -413,7 +434,7 @@ angular.module('starter.controllers', ['ng-mfb'])
         }
     } 
 })
-.controller('sewaCtrl', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+.controller('sewaCtrl', function($scope, $ionicPopover,$stateParams,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $timeout(function() {
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
@@ -451,9 +472,18 @@ angular.module('starter.controllers', ['ng-mfb'])
     }
 
     // Get Lapangan
+    
+    $ionicLoading.show({
+        content: 'Loading Data',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 200,
+        showDelay: 0
+    });
     $scope.tempatfutsal = function() {
         beforeAuth.get_tempatFutsal().success(function(dtlap) {
             $scope.dtlap = dtlap;
+            $ionicLoading.hide();
         });
     };
     $scope.tempatfutsal();
@@ -813,12 +843,12 @@ angular.module('starter.controllers', ['ng-mfb'])
             $scope.dataTeam = dataTeam;
         });
         beforeAuth.getUserId(id).success(function(dataUser) {
-            $scope.dataUser = dataUser;
+            $ionicLoading.hide();
         });
     };
     $scope.getTeamId();
 })
-.controller('pesanTeam', function($scope, $ionicPopover,$stateParams, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
+.controller('pesanTeam', function($scope, $ionicPopover,$ionicPopup,$stateParams,$ionicLoading, $timeout,ionicMaterialMotion,ionicMaterialInk,beforeAuth) {
     $scope.CallNumber = function(){ 
         var number = '08994453710' ; 
         window.plugins.CallNumber.callNumber(function(){
@@ -832,6 +862,13 @@ angular.module('starter.controllers', ['ng-mfb'])
         var element = document.getElementById("inputArea");
         element.style.height = element.scrollHeight + "px";
     };
+    $scope.loadingIndicator = $ionicLoading.show({
+        content: 'Loading Data',
+        animation: 'fade-in',
+        showBackdrop: true,
+        maxWidth: 800,
+        showDelay: 0
+    });
     $timeout(function() {
         ionicMaterialMotion.fadeSlideInRight({
             startVelocity: 3000
@@ -844,13 +881,38 @@ angular.module('starter.controllers', ['ng-mfb'])
     $scope.datapesan = function() {
         beforeAuth.ambil_isichat(id,idnya).success(function(datachat) {
             $scope.datachat = datachat;
-
+            $ionicLoading.hide();
         });
         beforeAuth.ambil_userid(idnya).success(function(dtuid) {
             $scope.dtuid = dtuid;
-        })
+            $ionicLoading.hide();
+        });
     };
     $scope.datapesan();
+    $scope.clickMe = function() {
+        $ionicLoading.show();
+        beforeAuth.ambil_isichat(id,idnya).success(function(datachat) {
+            $scope.datachat = datachat;
+            $ionicLoading.hide();
+        });
+    }
+    $scope.showAlertError = function(msg){
+        $ionicPopup.alert({
+          title: msg.title,
+          template: msg.message,
+          okText: 'Ok',
+          okType: 'button-assertive'
+      });
+    }
+    $scope.chat = {};
+    $scope.kirimpesan = function() {
+        if (!$scope.chat.msgnya) {
+            $scope.showAlertError({
+                title: "Information",
+                message: "Harap isi chat"
+            });
+        }else{}
+    };
     // .fromTemplate() method
     $ionicPopover.fromTemplateUrl('templates/popovercoba.html', {
         scope: $scope,

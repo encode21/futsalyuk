@@ -19,6 +19,9 @@
 	</div>
 	<div class="buttons buttons-right header-item">
 		<span>
+			<button type="submit" class="custom-right-button button button-icon button-clear ion-refresh" ng-click="clickMe()"></button>
+		</span>
+		<span>
 			<button type="submit" class="custom-right-button button button-icon button-clear ion-android-call" ng-click="CallNumber()"></button>
 		</span>
 		<span class="right-buttons">
@@ -54,15 +57,17 @@
 			</a>
 		</span>
 	</div>
+	<form method="post">
 	<label class="item-input-wrapper">
-		<textarea ng-model='doc.description' style="resize:none;overflow:hidden;" 
-   rows='{{doc.description.length/50 + 1}}' 
-   cols='50'></textarea>
+		<textarea ng-model='doc.description' ng-model="chat.msgnya" style="resize:none;overflow:hidden;" 
+   rows='{{doc.description.length/10 + 1}}' 
+   cols='40'></textarea>
 	</label>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
-			<button type="submit" class="custom-right-button button button-icon button-clear icon ion-android-send"></button>
+			<button type="submit" ng-click="kirimpesan()" class="custom-right-button button button-icon button-clear icon ion-android-send"></button>
 		</span>
 	</div>
+	</form>
 </div>
 </ion-view>
