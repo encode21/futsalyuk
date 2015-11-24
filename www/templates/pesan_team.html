@@ -29,14 +29,14 @@
 		</span>
 	</div>
 </ion-header-bar>
-<ion-content style="margin-bottom:25px;">
+<ion-content delegate-handle="downChatScroll" style="margin-bottom:25px;">
 <ion-scroll zooming="true" direction="y" style="height:100%;">
 <div class="col">
 	<div class="content list">
 		<div class="item item-avatar" ng-repeat="datachat in datachat">
 			<img class="{{ datachat.classHide }}" src="img/{{ datachat.ava_team }}">
 			<b class="{{ datachat.classIcon }}"></b>
-			<div class="card {{ datachat.classCard }}">
+			<div style="width:auto;min-width:50px;" class="card {{ datachat.classCard }}">
 				<div class="item item-text-wrap">
 					{{ datachat.msg }} 
 					<span class="item-note">
@@ -57,17 +57,16 @@
 			</a>
 		</span>
 	</div>
-	<form method="post">
+	<!-- <form method="post" id="formchat"> -->
 	<label class="item-input-wrapper">
-		<textarea ng-model='doc.description' ng-model="chat.msgnya" style="resize:none;overflow:hidden;" 
-   rows='{{doc.description.length/10 + 1}}' 
-   cols='40'></textarea>
+		<!-- <textarea ng-model='doc.description' ng-model="chat.msgnya" style="resize:none;overflow:hidden;" rows='{{doc.description.length/10 + 1}}' cols='40'></textarea> -->
+		<input id="valChat" type="text" ng-model="chat.msgnya">
 	</label>
 	<div class="buttons buttons-right header-item">
 		<span class="right-buttons">
 			<button type="submit" ng-click="kirimpesan()" class="custom-right-button button button-icon button-clear icon ion-android-send"></button>
 		</span>
 	</div>
-	</form>
+	<!-- </form> -->
 </div>
 </ion-view>
