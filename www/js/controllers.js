@@ -938,6 +938,7 @@ angular.module('starter.controllers', ['ng-mfb'])
                 }else{
                     $scope.clickMe();
                     // $ionicLoading.show();
+                    $ionicScrollDelegate.scrollBottom();
                 }
                 $ionicScrollDelegate.scrollBottom();
                 $("#valChat").val('');
